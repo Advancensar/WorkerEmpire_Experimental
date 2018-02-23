@@ -313,15 +313,6 @@
     <Reference Include="FastMember">
       <HintPath>Assets/Plugins/FastMember.1.2.0/lib/net45/FastMember.dll</HintPath>
     </Reference>
-    <Reference Include="FastMember">
-      <HintPath>Assets/Plugins/FastMember.1.2.0/lib/net40/FastMember.dll</HintPath>
-    </Reference>
-    <Reference Include="FastMember">
-      <HintPath>Assets/Plugins/FastMember.1.2.0/lib/netstandard1.5/FastMember.dll</HintPath>
-    </Reference>
-    <Reference Include="FastMember">
-      <HintPath>Assets/Plugins/FastMember.1.2.0/lib/netstandard2.0/FastMember.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />
