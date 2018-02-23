@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Armor : BaseItemType
+public class Armor : ItemType
 {
     public int Durability;
-
     public Armor()
     {
-        Debug.Log("This is an Armor");
+
     }
 }

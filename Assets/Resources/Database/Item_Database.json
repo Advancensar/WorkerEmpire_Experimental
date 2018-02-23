@@ -1,0 +1,67 @@
+{
+  "$type": "System.Collections.Generic.List`1[[Item, Assembly-CSharp]], mscorlib",
+  "$values": [
+    {
+      "$type": "Item, Assembly-CSharp",
+      "ID": 98,
+      "Name": "Eremon",
+      "Type": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "eren"
+        },
+        "Consumable": {
+          "$type": "Consumable, Assembly-CSharp",
+          "ConsumableInt": 99,
+          "Effects": {
+            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+            "$values": [
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
+              22
+            ]
+          }
+        },
+        "Armor": {
+          "$type": "Armor, Assembly-CSharp",
+          "Durability": 141
+        }
+      }
+    },
+    {
+      "$type": "Item, Assembly-CSharp",
+      "ID": 87,
+      "Name": "LUL",
+      "Type": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "asd"
+        },
+        "Armor": {
+          "$type": "Armor, Assembly-CSharp",
+          "Durability": 83
+        },
+        "Consumable": {
+          "$type": "Consumable, Assembly-CSharp",
+          "ConsumableInt": 97,
+          "Effects": {
+            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+            "$values": [
+              99,
+              12,
+              53,
+              22
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Item : MonoBehaviour {
+public class Item 
+{
     [Header("-- Default Inspector --")]
     public int ID;
-    public string Name;
-    public ItemType Type = new ItemType();
-
-    private void Start()
-    {
-        
-    }
+    public string Name = "";
+    public Dictionary<string, ItemType> Type = new Dictionary<string, ItemType>();
 
 }
