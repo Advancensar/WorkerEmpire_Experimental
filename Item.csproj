@@ -310,9 +310,6 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/nSr/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="FastMember">
-      <HintPath>Assets/Plugins/FastMember.1.2.0/lib/net45/FastMember.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />

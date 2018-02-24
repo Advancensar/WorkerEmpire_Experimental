@@ -11,201 +11,6 @@
           "$type": "BaseType, Assembly-CSharp",
           "BaseTypeString": "BTP"
         },
-        "Armor": {
-          "$type": "Armor, Assembly-CSharp",
-          "Durability": 95,
-          "asdf": {
-            "$type": "System.Collections.Generic.List`1[[test, Assembly-CSharp]], mscorlib",
-            "$values": [
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              }
-            ]
-          }
-        },
         "Consumable": {
           "$type": "Consumable, Assembly-CSharp",
           "ConsumableInt": 1235,
@@ -219,11 +24,124 @@
               99,
               12,
               53,
-              22,
-              99,
-              12,
-              53,
               22
+            ]
+          }
+        },
+        "Armor": {
+          "$type": "Armor, Assembly-CSharp",
+          "Durability": 95,
+          "asdf": {
+            "$type": "System.Collections.Generic.List`1[[test, Assembly-CSharp]], mscorlib",
+            "$values": [
+              {
+                "$type": "test, Assembly-CSharp",
+                "testString": "erenmon",
+                "testInt": 1,
+                "erenmon": {
+                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+                  "$values": [
+                    "a",
+                    "b",
+                    "c",
+                    "d"
+                  ]
+                },
+                "erenmon2": {
+                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+                  "$values": [
+                    "e",
+                    "f",
+                    "g",
+                    "h"
+                  ]
+                }
+              },
+              {
+                "$type": "test, Assembly-CSharp",
+                "testString": "TestString",
+                "testInt": 1,
+                "erenmon": {
+                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+                  "$values": [
+                    "a",
+                    "b",
+                    "c",
+                    "d"
+                  ]
+                },
+                "erenmon2": {
+                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+                  "$values": [
+                    "e",
+                    "f",
+                    "g",
+                    "h"
+                  ]
+                }
+              },
+              {
+                "$type": "test, Assembly-CSharp",
+                "testString": "erenmon",
+                "testInt": 1,
+                "erenmon": {
+                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+                  "$values": [
+                    "a",
+                    "b",
+                    "c",
+                    "d",
+                    "a1",
+                    "b2",
+                    "c",
+                    "d"
+                  ]
+                },
+                "erenmon2": {
+                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+                  "$values": [
+                    "e",
+                    "f",
+                    "g",
+                    "h",
+                    "e",
+                    "f3",
+                    "g",
+                    "h"
+                  ]
+                }
+              },
+              {
+                "$type": "test, Assembly-CSharp",
+                "testString": "TestString",
+                "testInt": 1,
+                "erenmon": {
+                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+                  "$values": [
+                    "a",
+                    "b",
+                    "c",
+                    "d",
+                    "a",
+                    "b",
+                    "c",
+                    "d"
+                  ]
+                },
+                "erenmon2": {
+                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+                  "$values": [
+                    "e",
+                    "f",
+                    "g",
+                    "h",
+                    "e",
+                    "f",
+                    "g",
+                    "h"
+                  ]
+                }
+              }
             ]
           }
         }
@@ -249,22 +167,22 @@
                 "$type": "test, Assembly-CSharp",
                 "testString": "erenmon",
                 "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
                 "erenmon": {
                   "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
                   "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
+                    "aaa",
+                    "bbb",
+                    "ccc",
+                    "ddd"
+                  ]
+                },
+                "erenmon2": {
+                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+                  "$values": [
+                    "eee",
+                    "ff",
+                    "g",
+                    "h"
                   ]
                 }
               },
@@ -272,396 +190,22 @@
                 "$type": "test, Assembly-CSharp",
                 "testString": "TestString",
                 "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
                 "erenmon": {
                   "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
                   "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
+                    "a",
+                    "qqqq",
+                    "c",
+                    "d"
                   ]
                 },
-                "erenmon": {
+                "erenmon2": {
                   "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
                   "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bulbaszar",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              }
-            ]
-          }
-        },
-        "Consumable": {
-          "$type": "Consumable, Assembly-CSharp",
-          "ConsumableInt": 1235,
-          "Effects": {
-            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-            "$values": [
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22
-            ]
-          }
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 0,
-      "Name": "",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Armor": {
-          "$type": "Armor, Assembly-CSharp",
-          "Durability": 95,
-          "asdf": {
-            "$type": "System.Collections.Generic.List`1[[test, Assembly-CSharp]], mscorlib",
-            "$values": [
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30,
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil",
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              }
-            ]
-          }
-        },
-        "Consumable": {
-          "$type": "Consumable, Assembly-CSharp",
-          "ConsumableInt": 1235,
-          "Effects": {
-            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-            "$values": [
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22
-            ]
-          }
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 0,
-      "Name": "",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Armor": {
-          "$type": "Armor, Assembly-CSharp",
-          "Durability": 95,
-          "asdf": {
-            "$type": "System.Collections.Generic.List`1[[test, Assembly-CSharp]], mscorlib",
-            "$values": [
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "testIntList": {
-                  "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-                  "$values": [
-                    5,
-                    10,
-                    20,
-                    30
-                  ]
-                },
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "bablba",
-                    "chalrmsn",
-                    "diboi",
-                    "sorqil"
+                    "e",
+                    "f",
+                    "eeeee",
+                    "h"
                   ]
                 }
               }
