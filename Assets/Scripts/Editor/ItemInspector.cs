@@ -12,7 +12,7 @@ public class ItemInspector : Editor {
 
     public override void OnInspectorGUI()
     {
-        item = ((ItemObject)target).item;
+        item = ((ItemObject)target).itemObjectData.item;
 
         if (GUILayout.Button("Add"))
         {

@@ -4,7 +4,7 @@
     {
       "$type": "Item, Assembly-CSharp",
       "ID": 0,
-      "Name": "",
+      "Name": "Item_1",
       "Type": {
         "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
         "BaseType": {
@@ -20,137 +20,20 @@
               99,
               12,
               53,
-              22,
-              99,
-              12,
-              53,
               22
             ]
           }
         },
         "Armor": {
           "$type": "Armor, Assembly-CSharp",
-          "Durability": 95,
-          "asdf": {
-            "$type": "System.Collections.Generic.List`1[[test, Assembly-CSharp]], mscorlib",
-            "$values": [
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "a",
-                    "b",
-                    "c",
-                    "d"
-                  ]
-                },
-                "erenmon2": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "e",
-                    "f",
-                    "g",
-                    "h"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "a",
-                    "b",
-                    "c",
-                    "d"
-                  ]
-                },
-                "erenmon2": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "e",
-                    "f",
-                    "g",
-                    "h"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "a",
-                    "b",
-                    "c",
-                    "d",
-                    "a1",
-                    "b2",
-                    "c",
-                    "d"
-                  ]
-                },
-                "erenmon2": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "e",
-                    "f",
-                    "g",
-                    "h",
-                    "e",
-                    "f3",
-                    "g",
-                    "h"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "a",
-                    "b",
-                    "c",
-                    "d",
-                    "a",
-                    "b",
-                    "c",
-                    "d"
-                  ]
-                },
-                "erenmon2": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "e",
-                    "f",
-                    "g",
-                    "h",
-                    "e",
-                    "f",
-                    "g",
-                    "h"
-                  ]
-                }
-              }
-            ]
-          }
+          "Durability": 95
         }
       }
     },
     {
       "$type": "Item, Assembly-CSharp",
-      "ID": 0,
-      "Name": "",
+      "ID": 1,
+      "Name": "Item_2",
       "Type": {
         "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
         "BaseType": {
@@ -159,58 +42,94 @@
         },
         "Armor": {
           "$type": "Armor, Assembly-CSharp",
-          "Durability": 95,
-          "asdf": {
-            "$type": "System.Collections.Generic.List`1[[test, Assembly-CSharp]], mscorlib",
+          "Durability": 95
+        },
+        "Consumable": {
+          "$type": "Consumable, Assembly-CSharp",
+          "ConsumableInt": 1235,
+          "Effects": {
+            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
             "$values": [
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "erenmon",
-                "testInt": 1,
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "aaa",
-                    "bbb",
-                    "ccc",
-                    "ddd"
-                  ]
-                },
-                "erenmon2": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "eee",
-                    "ff",
-                    "g",
-                    "h"
-                  ]
-                }
-              },
-              {
-                "$type": "test, Assembly-CSharp",
-                "testString": "TestString",
-                "testInt": 1,
-                "erenmon": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "a",
-                    "qqqq",
-                    "c",
-                    "d"
-                  ]
-                },
-                "erenmon2": {
-                  "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-                  "$values": [
-                    "e",
-                    "f",
-                    "eeeee",
-                    "h"
-                  ]
-                }
-              }
+              99,
+              12,
+              53,
+              22
             ]
           }
+        }
+      }
+    },
+    {
+      "$type": "Item, Assembly-CSharp",
+      "ID": 3,
+      "Name": "Item_3",
+      "Type": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "BTP"
+        },
+        "Armor": {
+          "$type": "Armor, Assembly-CSharp",
+          "Durability": 95
+        },
+        "Consumable": {
+          "$type": "Consumable, Assembly-CSharp",
+          "ConsumableInt": 1235,
+          "Effects": {
+            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+            "$values": [
+              99,
+              12,
+              53,
+              22
+            ]
+          }
+        }
+      }
+    },
+    {
+      "$type": "Item, Assembly-CSharp",
+      "ID": 4,
+      "Name": "Item_3",
+      "Type": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "BTP"
+        },
+        "Armor": {
+          "$type": "Armor, Assembly-CSharp",
+          "Durability": 95
+        },
+        "Consumable": {
+          "$type": "Consumable, Assembly-CSharp",
+          "ConsumableInt": 1235,
+          "Effects": {
+            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
+            "$values": [
+              99,
+              12,
+              53,
+              22
+            ]
+          }
+        }
+      }
+    },
+    {
+      "$type": "Item, Assembly-CSharp",
+      "ID": 2,
+      "Name": "Item_4",
+      "Type": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "BTP"
+        },
+        "Armor": {
+          "$type": "Armor, Assembly-CSharp",
+          "Durability": 95
         },
         "Consumable": {
           "$type": "Consumable, Assembly-CSharp",

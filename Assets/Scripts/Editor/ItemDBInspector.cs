@@ -87,13 +87,15 @@ public class ItemDBInspector : Editor
             {
                 //tempTypes.Remove(typeof(Consumable).ToString());
             }
-        } 
+        }
         #endregion
-
+        
+        CustomSerializer.SerializeObject(tempItem);
+        
         // Show fields for each type
         foreach (var type in tempTypes.Values)
         {
-            CustomSerializer.SerializeObject(type);
+            //CustomSerializer.SerializeObject(type);
 
             //EditorUtility.SerializeObject(type);
         }

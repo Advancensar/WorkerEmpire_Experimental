@@ -30,94 +30,15 @@ public class ItemDatabase
             }
         }
     }
- 
-    //public static ItemDatabase Instance
-    //{
-    //    get
-    //    {
-    //        if (instance == null) instance = new ItemDatabase();
-    //        return instance;
-    //    }
-    //}
-
-    private void Awake()
-    {
-        //Sets database object to not be destroyed when loading scene 
-        //DontDestroyOnLoad(gameObject);
-
-        //Debug.Log("Start " + Application.dataPath);
-        //DATABASE_PATH = Application.dataPath + DATABASE_PATH;
-        //Debug.Log(DATABASE_PATH);
-
-        //if (Instance == null)
-        //{
-        //    //if not, set instance to this
-        //    Instance = this;
-        //    CreateNewInstance();
-        //}
-
-
-        //If instance already exists and it's not this:
-        //else if (Instance != this)
-
-        //    //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-        //    Destroy(gameObject);
-
-        //if (Instance != null && Instance != this)
-        //{
-        //    Debug.Log("Instance is not null(?)");
-        //    Destroy(gameObject);
-        //}
-        //else
-        //{
-        //    Debug.Log("New db created");
-        //    CreateNewInstance();
-        //}
-        
-        //LoadDB();
-    }    
-
-    //private void CreateNewInstance()
-    //{
-    //    Debug.Log("Creating new instance");
-    //    Instance = new ItemDatabase();
-    //    Items = new List<Item>();
-    //}
 
     public void LoadDB()
     {
-        Debug.Log("Loading DB at path : " + DATABASE_PATH);
-        if (File.Exists(DATABASE_PATH))
-        {
-
-            Items = JsonConvert.DeserializeObject<List<Item>>(File.ReadAllText(DATABASE_PATH),
-                                                            new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
-        }
-        //else
-        //    CreateNewInstance();
+        Items = FileTool.LoadObjectFromJson<List<Item>>(DATABASE_PATH);
     }
 
     public void SaveDB()
     {
-        string jsonString = JsonConvert.SerializeObject(this.Items,
-                                                        Formatting.Indented,
-                                                        new JsonSerializerSettings
-                                                        {
-                                                            TypeNameHandling = TypeNameHandling.All,
-                                                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                                                        });
-
-        File.WriteAllText(DATABASE_PATH, jsonString);
-        //if (File.Exists(DATABASE_PATH))
-        //{
-        //    File.WriteAllText(@DATABASE_PATH, jsonString);
-        //    //JsonWriter jw = File.OpenText(DATABASE_PATH);
-        //    using (StreamWriter file = File.OpenWrite(DATABASE_PATH))
-        //    {
-        //        JsonSerializer serializer = new JsonSerializer();
-        //        serializer.Serialize(file, jsonString);
-        //    }
-        //}
+        FileTool.SaveFileAsJson(DATABASE_PATH, Items);
     }
 
     public Item GetItem(string name)

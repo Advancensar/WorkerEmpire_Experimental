@@ -6,5 +6,5 @@ using UnityEngine;
 public class Armor : ItemType
 {
     public int Durability = 95;
-    public List<test> asdf = new List<test>() { new test("erenmon"), new test()};
+
 }
