@@ -20,6 +20,18 @@
               99,
               12,
               53,
+              22,
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
               22
             ]
           }
@@ -53,6 +65,18 @@
               99,
               12,
               53,
+              22,
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
               22
             ]
           }
@@ -79,6 +103,18 @@
           "Effects": {
             "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
             "$values": [
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
+              22,
               99,
               12,
               53,
@@ -111,6 +147,18 @@
               99,
               12,
               53,
+              22,
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
               22
             ]
           }
@@ -140,9 +188,85 @@
               99,
               12,
               53,
+              22,
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
+              22,
+              99,
+              12,
+              53,
               22
             ]
           }
+        }
+      }
+    },
+    {
+      "$type": "Item, Assembly-CSharp",
+      "ID": 0,
+      "Name": "Empty",
+      "Type": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "BTP"
+        },
+        "Equippable": {
+          "$type": "Equippable, Assembly-CSharp",
+          "SlotType": 1
+        }
+      }
+    },
+    {
+      "$type": "Item, Assembly-CSharp",
+      "ID": 5,
+      "Name": "Item_8",
+      "Type": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "BTP"
+        },
+        "Equippable": {
+          "$type": "Equippable, Assembly-CSharp",
+          "SlotType": 1
+        }
+      }
+    },
+    {
+      "$type": "Item, Assembly-CSharp",
+      "ID": 11,
+      "Name": "Item_11",
+      "Type": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "BTP"
+        },
+        "Equippable": {
+          "$type": "Equippable, Assembly-CSharp",
+          "SlotType": 2
+        }
+      }
+    },
+    {
+      "$type": "Item, Assembly-CSharp",
+      "ID": 25,
+      "Name": "Item_25",
+      "Type": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "BTP"
+        },
+        "Equippable": {
+          "$type": "Equippable, Assembly-CSharp",
+          "SlotType": 3
         }
       }
     }

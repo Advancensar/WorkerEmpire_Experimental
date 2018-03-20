@@ -10,17 +10,17 @@ public class Storage : MonoBehaviour {
     public GameObject SlotPrefab;
     public GameObject ItemObjectPrefab;
 
-    List<GameObject> Slots = new List<GameObject>();
     
     void Awake () {
         var slots = transform.Find("Viewport").transform.Find("Content");
         for (int i = 0; i < InventorySize; i++)
         {
-            Slots.Add(Instantiate(SlotPrefab, slots, worldPositionStays: false));
-            Slots[i].GetComponent<StorageSlot>().SlotNumber = i;
+            Instantiate(SlotPrefab, slots, worldPositionStays: false);
+            //Slots[i].GetComponent<Slot>().SlotNumber = i;
+
         }
 	}
-    
+        
     public void SaveInventory()
     {        
         var templist = new List<ItemObjectData>();
@@ -30,6 +30,7 @@ public class Storage : MonoBehaviour {
         }
         FileTool.SaveFileAsJson(Application.dataPath + @"/Resources/Database/Storage.json", templist);        
     }
+
     public void LoadInventory()
     {
         Debug.Log("LoadInventory");
@@ -48,8 +49,10 @@ public class Storage : MonoBehaviour {
             //item.transform.SetParent(s.transform);
             //Debug.Log("Slot" + Slots[i].GetComponent<SlotHandler>().SlotNumber);
             //item.transform.SetParent(Slots[0].transform);
-
-            item.transform.SetParent(Slots[tempItems[i].SlotNumber].transform);
+            //Debug.Log("Slot number : " + tempItems[i].SlotNumber);
+            //Debug.Log("Gameobject : " + Slot.Slots[tempItems[i].SlotNumber].gameObject.name);
+            //Debug.Log(Slot.Slots[1])
+            item.transform.SetParent(Slot.Slots[tempItems[i].SlotNumber].transform);
             //Items.Add(itemObject);
 
             //Slots[Items[1].SlotNumber].GetComponent<SlotHandler>().HeldItem
@@ -60,10 +63,10 @@ public class Storage : MonoBehaviour {
     public void AddRandomItemToRandomSlot()
     {
         int id = FindFirstAvailableSlot();
-        int itemid = Random.Range(0, ItemDatabase.Instance.Items.Count);
+        //int itemid = Random.Range(0, ItemDatabase.Instance.Items.Count-1);
         if (id >= 0)
         {
-            var randomItem =ItemDatabase.Instance.GetItem(itemid);
+            var randomItem = ItemDatabase.Instance.RandomItem();
             //var item = ItemDatabase.GetItemCopy(UnityEngine.Random.Range(0, ItemDatabase.GetDBLength()));
             var itemObjectGameObject = Instantiate(ItemObjectPrefab);
             itemObjectGameObject.GetComponent<ItemObject>().itemObjectData.item = randomItem;
@@ -78,10 +81,10 @@ public class Storage : MonoBehaviour {
 
     int FindFirstAvailableSlot()
     {
-        for (int i = 0; i < Slots.Count; i++)
+        for (int i = Slot.inventoryOffset; i < Slot.Slots.Count; i++)
         {
 
-            if (Slots[i].GetComponent<StorageSlot>().HeldItem == null)
+            if (Slot.Slots[i].GetComponent<Slot>().HeldItem == null)
             {
                 //Debug.Log("Slot found : " + i);
                 return i;
@@ -91,9 +94,9 @@ public class Storage : MonoBehaviour {
     }
     void AddItemToSlot(int id, GameObject item)
     {
-        if (Slots[id].GetComponent<StorageSlot>().HeldItem == null)
+        if (Slot.Slots[id].GetComponent<Slot>().HeldItem == null)
         {
-            item.transform.SetParent(Slots[id].transform);
+            item.transform.SetParent(Slot.Slots[id].transform);
         }
         //if (Slots[id].GetComponent<SlotHandler>().HoldItem == null)
         //{

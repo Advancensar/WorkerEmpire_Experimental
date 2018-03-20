@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
 
 [System.Serializable]
 public class ItemDatabase
@@ -71,6 +72,12 @@ public class ItemDatabase
             Instance.Items = new List<Item>();
         }
         Instance.Items.Add(item);
+    }
+
+    public Item RandomItem()
+    {
+        var result = Items.Select(x => x.ID).ToList();
+        return GetItem(result[Random.Range(0, result.Count)]);
     }
 
 }

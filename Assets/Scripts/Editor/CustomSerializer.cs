@@ -154,6 +154,12 @@ public static class CustomSerializer {
                     SerializeDictionary(memberInfo, obj, dictionary);
                 }
             }
+            else if (type.IsEnum)
+            {
+                var value = GetValue(memberInfo, obj);
+                value = EditorGUILayout.EnumPopup(memberInfo.Name, (Enum)value);
+                SetValue(memberInfo, obj, value);
+            }
             else
             {
                 SerializeObject(GetValue(memberInfo, obj));
@@ -273,6 +279,11 @@ public static class CustomSerializer {
                 else if (type == typeof(GameObject))
                 {
                     liste[i] = EditorGUILayout.ObjectField((GameObject)liste[i], type, true);
+                    SetValue(mi, obj, liste);
+                }
+                else if (type.IsEnum)
+                {
+                    liste[i] = EditorGUILayout.EnumPopup("[" + i.ToString() + "]", (Enum)liste[i]);
                     SetValue(mi, obj, liste);
                 }
                 #endregion

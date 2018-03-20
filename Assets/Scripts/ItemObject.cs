@@ -22,6 +22,7 @@ public class ItemObject : MonoBehaviour {
 
     public void LoadItemInfo()
     {
+        Debug.Log(itemObjectData.SlotNumber);
         gameObject.name = itemObjectData.item.Name;
         var img = GetComponent<Image>();
         img.sprite = itemObjectData.item.Image();

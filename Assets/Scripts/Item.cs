@@ -13,5 +13,19 @@ public class Item
     {
         return Resources.Load<Sprite>("Sprites/Items/" + Name);
     }
+    
+    public bool IsEquippable()
+    {
+        return Type.ContainsKey("Equippable");        
+    }
+
+    public SlotType slotType()
+    {
+        if (Type.ContainsKey("Equippable"))
+        {
+            return ((Equippable)Type["Equippable"]).SlotType;
+        }
+        return SlotType.All;
+    }
 
 }
