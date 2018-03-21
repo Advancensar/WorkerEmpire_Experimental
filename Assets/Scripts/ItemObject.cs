@@ -12,9 +12,9 @@ public class ItemObject : MonoBehaviour {
         //gameObject.name = itemObjectData.item.Name;
         //var img = GetComponent<Image>();
         //img.sprite = itemObjectData.item.Image();
-        
+
         //GetComponent<Image>().sprite = test;
-        
+
 
         //Debug.Log(item.Image());
         //Debug.Log("Test: " + ItemDatabase.Instance.Items);
@@ -22,9 +22,8 @@ public class ItemObject : MonoBehaviour {
 
     public void LoadItemInfo()
     {
-        Debug.Log(itemObjectData.SlotNumber);
         gameObject.name = itemObjectData.item.Name;
-        var img = GetComponent<Image>();
+        var img = GetComponentInChildren<Image>();
         img.sprite = itemObjectData.item.Image();
     }
 }

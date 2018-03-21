@@ -17,7 +17,6 @@ public class Storage : MonoBehaviour {
         {
             Instantiate(SlotPrefab, slots, worldPositionStays: false);
             //Slots[i].GetComponent<Slot>().SlotNumber = i;
-
         }
 	}
         
@@ -28,21 +27,23 @@ public class Storage : MonoBehaviour {
         {
             templist.Add(item.itemObjectData);
         }
-        FileTool.SaveFileAsJson(Application.dataPath + @"/Resources/Database/Storage.json", templist);        
+        FileTool.SaveFileAsJson(@"/Database/Storage.json", templist);        
     }
 
     public void LoadInventory()
     {
         Debug.Log("LoadInventory");
-        var tempItems = FileTool.LoadObjectFromJson<List<ItemObjectData>>(Application.dataPath + @"/Resources/Database/Storage.json");
+        var tempItems = FileTool.LoadObjectFromJson<List<ItemObjectData>>(@"/Database/Storage.json");
 
         for (int i = 0; i < tempItems.Count; i++)
         {
             var item = Instantiate(ItemObjectPrefab);
+
             var itemObject = item.GetComponent<ItemObject>();
             itemObject.itemObjectData.item = tempItems[i].item;
             itemObject.itemObjectData.SlotNumber = tempItems[i].SlotNumber;
             itemObject.LoadItemInfo();
+            AddItemToSlot(itemObject.itemObjectData.SlotNumber, item);
 
 
             //var s = Slots[i];
@@ -52,7 +53,7 @@ public class Storage : MonoBehaviour {
             //Debug.Log("Slot number : " + tempItems[i].SlotNumber);
             //Debug.Log("Gameobject : " + Slot.Slots[tempItems[i].SlotNumber].gameObject.name);
             //Debug.Log(Slot.Slots[1])
-            item.transform.SetParent(Slot.Slots[tempItems[i].SlotNumber].transform);
+            //item.transform.SetParent(Slot.Slots[tempItems[i].SlotNumber].transform);
             //Items.Add(itemObject);
 
             //Slots[Items[1].SlotNumber].GetComponent<SlotHandler>().HeldItem
@@ -96,7 +97,8 @@ public class Storage : MonoBehaviour {
     {
         if (Slot.Slots[id].GetComponent<Slot>().HeldItem == null)
         {
-            item.transform.SetParent(Slot.Slots[id].transform);
+            item.transform.SetParent(Slot.Slots[id].transform, false);
+            item.transform.localScale = Vector3.one;
         }
         //if (Slots[id].GetComponent<SlotHandler>().HoldItem == null)
         //{
@@ -108,7 +110,7 @@ public class Storage : MonoBehaviour {
         //}
         else
         {
-            Debug.Log("Inventory is full");
+            Debug.Log("Slot is full" + " " + Slot.Slots[id].GetComponent<Slot>().SlotNumber);
         }
     }
 }

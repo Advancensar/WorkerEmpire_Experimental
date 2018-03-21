@@ -21,7 +21,7 @@ public enum SlotType
 public class Slot : MonoBehaviour, IPointerClickHandler 
 {
     public static Dictionary<int, GameObject> Slots = new Dictionary<int, GameObject>();
-    public static int inventoryOffset;
+    public static int inventoryOffset = 0;
 
     public GameObject HeldItem;
 
@@ -33,14 +33,17 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-
+        //If it's player inventory.
         if (gameObject.tag == "CharacterItem")
         {
-            inventoryOffset = transform.parent.childCount; // Prevent looping this if possible(should be possible by referencing the parent)
+            //Set the storage inventory offset if it's not has been set.
+            if (inventoryOffset == 0)
+                inventoryOffset = transform.parent.childCount;
 
             SlotNumber = transform.GetSiblingIndex();
             Slots.Add(SlotNumber, gameObject);
         }
+        //If it's storage inventory
         else
         {
             SlotNumber = (transform.GetSiblingIndex()) + inventoryOffset;
@@ -52,10 +55,13 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         if (transform.childCount > 0)
         {
-            HeldItem = transform.GetChild(0).gameObject;
-            HeldItem.GetComponent<RectTransform>().localPosition = Vector2.zero;
-            HeldItem.GetComponent<ItemObject>().itemObjectData.SlotNumber = SlotNumber;
-            Storage.Items.Add(HeldItem.GetComponent<ItemObject>());
+            HeldItem = FirstChildWithItemObject();
+            if (HeldItem != null)
+            {
+                HeldItem.GetComponent<RectTransform>().localPosition = Vector2.zero;
+                HeldItem.GetComponent<ItemObject>().itemObjectData.SlotNumber = SlotNumber;
+                Storage.Items.Add(HeldItem.GetComponent<ItemObject>());
+            }
         }
         else
         {
@@ -113,7 +119,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public bool CanSwap(GameObject slot, GameObject oldSlot, GameObject item)
+    //Check if the target and old slot is capable of swapping item in slot with item in motion.
+    bool CanSwap(GameObject slot, GameObject oldSlot, GameObject item)
     {
         var slotType = slot.GetComponent<Slot>().SlotType;
         var oldSlotType = oldSlot.GetComponent<Slot>().SlotType;
@@ -126,7 +133,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
         return false;
     }
-    public bool CanMove(GameObject slot, GameObject item)
+    //Check if the target slot accepts the item in motion
+    bool CanMove(GameObject slot, GameObject item)
     {
         var slotType = slot.GetComponent<Slot>().SlotType;
 
@@ -136,6 +144,18 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             return true;
 
         return false;
+    }
+
+    GameObject FirstChildWithItemObject()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).tag == "ItemObject")
+            {
+                return transform.GetChild(i).gameObject;
+            }
+        }
+        return null;
     }
 
 }

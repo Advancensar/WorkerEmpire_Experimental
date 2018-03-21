@@ -11,7 +11,7 @@ public class ItemDatabase
     private static ItemDatabase instance = null;
     private static readonly object padlock = new object();
 
-    private string DATABASE_PATH = @"/Resources/Database/Item_Database.json";
+    private string DATABASE_PATH = @"/Database/Item_Database.json";
 
     public List<Item> Items = new List<Item>();
 
@@ -24,7 +24,6 @@ public class ItemDatabase
                 if (instance == null)
                 {
                     instance = new ItemDatabase();
-                    instance.DATABASE_PATH = Application.dataPath + instance.DATABASE_PATH;
                     instance.LoadDB();
                 }
                 return instance;
