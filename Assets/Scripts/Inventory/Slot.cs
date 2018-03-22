@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public enum SlotType
 {
-    All,
+    None,
     MainHand,
     OffHand,
     Head,
@@ -126,7 +126,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         var oldSlotType = oldSlot.GetComponent<Slot>().SlotType;
         var itemSlotType = item.GetComponent<ItemObject>().itemObjectData.item.slotType();
 
-        if (SlotType == SlotType.All && oldSlotType == SlotType.All)
+        if (SlotType == SlotType.None && oldSlotType == SlotType.None)
             return true;
         if (SlotType == itemSlotType && oldSlotType == itemSlotType)
             return true;
@@ -138,7 +138,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         var slotType = slot.GetComponent<Slot>().SlotType;
 
-        if (SlotType == SlotType.All)
+        if (SlotType == SlotType.None)
             return true;
         if (SlotType == item.GetComponent<ItemObject>().itemObjectData.item.slotType())
             return true;
