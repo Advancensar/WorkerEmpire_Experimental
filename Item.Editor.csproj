@@ -388,6 +388,7 @@
     <Compile Include="Assets\Scripts\Editor\ItemEditorWindow.cs" />
     <Compile Include="Assets\Scripts\Editor\ItemInspector.cs" />
     <Compile Include="Assets\Scripts\Editor\ItemObjectInspector.cs" />
+    <Compile Include="Assets\Scripts\Editor\NodeCurveManager.cs" />
     <Compile Include="Assets\Scripts\Editor\testeditor.cs" />
     <Compile Include="Assets\Scripts\Editor\uGUITools.cs" />
   </ItemGroup>

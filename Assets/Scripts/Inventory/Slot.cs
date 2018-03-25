@@ -122,7 +122,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     //Check if the target and old slot is capable of swapping item in slot with item in motion.
     bool CanSwap(GameObject slot, GameObject oldSlot, GameObject item)
     {
-        var slotType = slot.GetComponent<Slot>().SlotType;
         var oldSlotType = oldSlot.GetComponent<Slot>().SlotType;
         var itemSlotType = item.GetComponent<ItemObject>().itemObjectData.item.slotType();
 
@@ -136,8 +135,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     //Check if the target slot accepts the item in motion
     bool CanMove(GameObject slot, GameObject item)
     {
-        var slotType = slot.GetComponent<Slot>().SlotType;
-
         if (SlotType == SlotType.None)
             return true;
         if (SlotType == item.GetComponent<ItemObject>().itemObjectData.item.slotType())
