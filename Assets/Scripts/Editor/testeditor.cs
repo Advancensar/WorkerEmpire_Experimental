@@ -39,7 +39,7 @@ public class testeditor : Editor {
         }
         tempItem.Type = tempTypes;
 
-        CustomSerializer.SerializeObject(tempItem);
+        CustomInspector.SerializeObject(tempItem);
         //if (GUILayout.Button("Add item to storage inventory"))
         //{
         //    Storage.Items.Add(tempItem);

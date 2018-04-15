@@ -11,7 +11,7 @@ public class ItemDatabase
     private static ItemDatabase instance = null;
     private static readonly object padlock = new object();
 
-    private string DATABASE_PATH = @"/Database/Item_Database.json";
+    private string PATH = @"/Database/Item_Database.json";
 
     public List<Item> Items = new List<Item>();
 
@@ -33,12 +33,12 @@ public class ItemDatabase
 
     public void LoadDB()
     {
-        Items = FileTool.LoadObjectFromJson<List<Item>>(DATABASE_PATH);
+        Items = FileTool.LoadObjectFromJson<List<Item>>(PATH);
     }
 
     public void SaveDB()
     {
-        FileTool.SaveFileAsJson(DATABASE_PATH, Items);
+        FileTool.SaveFileAsJson(PATH, Items);
     }
 
     public Item GetItem(string name)

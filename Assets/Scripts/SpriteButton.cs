@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class SpriteButton : MonoBehaviour
 {
     float minimumDistance = 10;
@@ -24,6 +25,7 @@ public class SpriteButton : MonoBehaviour
 
     private void OnMouseDown()
     {
+        GameObject.Find("HouseWindow").GetComponent<HouseWindow>().LoadWindowInfo(transform.parent.GetComponent<House>());
         Debug.Log("Something");
     }
 

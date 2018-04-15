@@ -8,6 +8,13 @@ using UnityEngine.UI;
 public enum SlotType
 {
     None,
+    Storage,
+    CharacterInventory
+}
+
+public enum AcceptedItemType
+{
+    All,
     MainHand,
     OffHand,
     Head,
@@ -20,35 +27,51 @@ public enum SlotType
 
 public class Slot : MonoBehaviour, IPointerClickHandler 
 {
+    public static readonly int inventoryOffset = 6;
+
     public static Dictionary<int, GameObject> Slots = new Dictionary<int, GameObject>();
-    public static int inventoryOffset = 0;
 
     public GameObject HeldItem;
+    public SlotType SlotType;
+    public AcceptedItemType AcceptedItemType;
+    public int SlotNumber;
 
     static GameObject ItemInMotion;
     static GameObject OldSlot;
 
-    public SlotType SlotType;
-    public int SlotNumber;
-
-    private void Start()
+    private void Awake()
     {
-        //If it's player inventory.
-        if (gameObject.tag == "CharacterItem")
-        {
-            //Set the storage inventory offset if it's not has been set.
-            if (inventoryOffset == 0)
-                inventoryOffset = transform.parent.childCount;
+        SlotNumber = transform.GetSiblingIndex();
 
-            SlotNumber = transform.GetSiblingIndex();
-            Slots.Add(SlotNumber, gameObject);
-        }
-        //If it's storage inventory
-        else
-        {
-            SlotNumber = (transform.GetSiblingIndex()) + inventoryOffset;
-            Slots.Add(SlotNumber, gameObject);
-        }
+        //if (SlotType != SlotType.None)
+        //{
+        //    if (!SaveManager.Inventory.ContainsKey(gameObject.tag))
+        //    {
+        //        SaveManager.Inventory.Add(gameObject.tag, new Dictionary<int, ItemObjectData>());
+        //    }
+        //    SaveManager.Inventory[gameObject.tag].Add(SlotNumber, gameObject);
+        //}
+        
+        ////If it's player inventory.
+        //if (gameObject.tag == "CharacterItem")
+        //{
+        //    ////Set the storage inventory offset if it's not has been set.
+        //    //if (inventoryOffset == 0)
+        //    //    inventoryOffset = transform.parent.childCount;
+
+        //    SlotNumber = transform.GetSiblingIndex();
+        //    Slots.Add(SlotNumber, gameObject);
+        //}
+        //else if (SlotType == SlotType.Storage) //If it's storage inventory
+        //{
+        //    SlotNumber = (transform.GetSiblingIndex()) + inventoryOffset;
+        //    Slots.Add(SlotNumber, gameObject);
+        //}
+        //else
+        //{
+        //    //Do nothing
+        //    //Debug.Log(SlotType);
+        //}
     }
 
     void OnTransformChildrenChanged()
@@ -60,15 +83,14 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             {
                 HeldItem.GetComponent<RectTransform>().localPosition = Vector2.zero;
                 HeldItem.GetComponent<ItemObject>().itemObjectData.SlotNumber = SlotNumber;
-                Storage.Items.Add(HeldItem.GetComponent<ItemObject>());
+                //Storage.Instance.Items.Add(HeldItem.GetComponent<ItemObject>());
             }
         }
         else
         {
-            Storage.Items.Remove(HeldItem.GetComponent<ItemObject>());
+            //Storage.Instance.Items.Remove(HeldItem.GetComponent<ItemObject>());
             HeldItem = null;
         }
-
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -125,7 +147,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         var oldSlotType = oldSlot.GetComponent<Slot>().SlotType;
         var itemSlotType = item.GetComponent<ItemObject>().itemObjectData.item.slotType();
 
-        if (SlotType == SlotType.None && oldSlotType == SlotType.None)
+        if (SlotType == SlotType.Storage && oldSlotType == SlotType.Storage)
             return true;
         if (SlotType == itemSlotType && oldSlotType == itemSlotType)
             return true;
@@ -135,7 +157,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     //Check if the target slot accepts the item in motion
     bool CanMove(GameObject slot, GameObject item)
     {
-        if (SlotType == SlotType.None)
+        if (AcceptedItemType == AcceptedItemType.All)
             return true;
         if (SlotType == item.GetComponent<ItemObject>().itemObjectData.item.slotType())
             return true;

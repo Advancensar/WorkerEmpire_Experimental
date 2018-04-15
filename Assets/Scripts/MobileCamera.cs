@@ -98,8 +98,6 @@ public class MobileCamera : MonoBehaviour
         // Otherwise, if the mouse is still down, pan the camera.
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("mouse click ");
-
             lastPanPosition = Input.mousePosition;
         }
         else if (Input.GetMouseButton(0))

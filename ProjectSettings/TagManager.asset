@@ -8,6 +8,8 @@ TagManager:
   - ItemObject
   - DebugText
   - NodeCurveManager
+  - Storage
+  - NonSaveSlot
   layers:
   - Default
   - TransparentFX

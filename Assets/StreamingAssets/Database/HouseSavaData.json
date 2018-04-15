@@ -1,0 +1,28 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PlayerHouseData, Assembly-CSharp]], mscorlib",
+  "Velia/Cumhuriyet/5": {
+    "$type": "PlayerHouseData, Assembly-CSharp",
+    "Current": 4,
+    "HouseType": "Jeweler"
+  },
+  "Velia/Cumhuriyet/3": {
+    "$type": "PlayerHouseData, Assembly-CSharp",
+    "Current": 2,
+    "HouseType": "Blacksmith"
+  },
+  "Velia/Cumhuriyetj/4": {
+    "$type": "PlayerHouseData, Assembly-CSharp",
+    "Current": 1,
+    "HouseType": "Blacksmith"
+  },
+  "Velia/Cumhuriyeth/4": {
+    "$type": "PlayerHouseData, Assembly-CSharp",
+    "Current": 21,
+    "HouseType": "Jeweler"
+  },
+  "Velia/Cumhuriyet/4": {
+    "$type": "PlayerHouseData, Assembly-CSharp",
+    "Current": 8,
+    "HouseType": "Bank"
+  }
+}

@@ -5,9 +5,8 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public static class FileTool {
-
-
+public static class FileTool
+{
     public static T LoadObjectFromJson<T>(string filePath)
     {
         if (!Application.isEditor)
@@ -24,13 +23,16 @@ public static class FileTool {
                 File.WriteAllBytes(Application.persistentDataPath + filePath, loadFile.bytes); // Write the data from jar to file at path
             }
             filePath = Application.persistentDataPath + filePath;
-
         }
         else
         {
+            if (!File.Exists(Application.streamingAssetsPath + filePath))
+            {
+                CreateFile(filePath);
+            }
             filePath = Application.streamingAssetsPath + filePath;
         }
-        
+
 
         return JsonConvert.DeserializeObject<T>(File.ReadAllText(filePath),
                                                             new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
@@ -41,10 +43,6 @@ public static class FileTool {
         if (!File.Exists(filePath))
         {
             CreateFile(filePath);
-            
-            Debug.Log(filePath);
-            // TODO: If file doesn't exist, create one?.
-            //return;
         }
 
         if (!Application.isEditor)
@@ -85,7 +83,6 @@ public static class FileTool {
             filePath = Application.streamingAssetsPath + filePath;
         }
         Directory.CreateDirectory(dir);
-        
         var fs = File.Create(filePath);
         fs.Close();        
     }

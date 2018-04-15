@@ -20,7 +20,7 @@ public class Item
         {
             return ((Equippable)Type["Equippable"]).SlotType;
         }
-        return SlotType.None;
+        return SlotType.CharacterInventory;
     }
 
 }

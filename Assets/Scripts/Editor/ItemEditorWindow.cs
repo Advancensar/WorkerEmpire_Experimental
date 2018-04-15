@@ -31,7 +31,7 @@ public class ItemEditorWindow : EditorWindow {
             if (foldout[hashCode])
             {
                 EditorGUILayout.BeginVertical();
-                CustomSerializer.SerializeObject(item);
+                CustomInspector.SerializeObject(item);
                 EditorGUILayout.EndVertical();
             }
         }
