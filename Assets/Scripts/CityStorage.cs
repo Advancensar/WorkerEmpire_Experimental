@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class CityStorage : MonoBehaviour {
 
     public Inventory Inventory;
 
-    private void Awake()
+    private void Start()
     {
-        Inventory.CreateInventory(gameObject.name);
-        Inventory.LoadInventory();
+        Inventory.InventoryName = gameObject.name;
+        InventoryManager.Instance.AddInventoryToSaveManager(Inventory);
+        InventoryManager.Instance.LoadInventory(Inventory);
     }
     
 

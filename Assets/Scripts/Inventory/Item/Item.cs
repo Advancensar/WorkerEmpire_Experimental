@@ -9,6 +9,11 @@ public class Item
     public string Name = "Empty";
     public Dictionary<string, ItemType> Type = new Dictionary<string, ItemType>();
 
+    public Item()
+    {
+        Type.Add("BaseType", new BaseType());
+    }
+
     public Sprite Image()
     {
         return Resources.Load<Sprite>("Sprites/Items/" + Name);
@@ -20,7 +25,7 @@ public class Item
         {
             return ((Equippable)Type["Equippable"]).SlotType;
         }
-        return SlotType.CharacterInventory;
+        return SlotType.All;
     }
 
 }

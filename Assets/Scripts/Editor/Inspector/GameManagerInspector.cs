@@ -17,7 +17,7 @@ public class GameManagerInspector : Editor
 
         if (GUILayout.Button("Save Houses"))
         {
-            HouseSaveManager.SavePlayerHouseData();
+            CityManager.Instance.SavePlayerHouseData();
             //var houseHolderTransform = ((GameManager)target).HouseObjectsHolder.transform;
             //foreach (Transform go in houseHolderTransform)
             //{

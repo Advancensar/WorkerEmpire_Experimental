@@ -10,10 +10,12 @@ public class SpriteButton : MonoBehaviour
     float minimumDistanceScale = 1.15f;
     float maximumDistanceScale = 0.25f;
 
+    HouseWindow HouseWindow;
+
     // Use this for initialization
     void Start()
     {
-
+        HouseWindow = GameObject.Find("HouseWindow").GetComponent<HouseWindow>();
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class SpriteButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GameObject.Find("HouseWindow").GetComponent<HouseWindow>().LoadWindowInfo(transform.parent.GetComponent<House>());
+        HouseWindow.LoadWindowInfo(transform.parent.GetComponent<House>());
         Debug.Log("Something");
     }
 

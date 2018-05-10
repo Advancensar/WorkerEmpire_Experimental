@@ -41,8 +41,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeldItem: {fileID: 0}
-  SlotType: 1
-  SlotNumber: -9
+  InventoryType: 1
+  SlotType: 0
+  SlotNumber: -1
 --- !u!114 &114193013858819864
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,327 +1,64 @@
-{
-  "$type": "System.Collections.Generic.List`1[[Item, Assembly-CSharp]], mscorlib",
-  "$values": [
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 0,
-      "Name": "Item_1",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Consumable": {
-          "$type": "Consumable, Assembly-CSharp",
-          "ConsumableInt": 1235,
-          "Effects": {
-            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-            "$values": [
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22
-            ]
-          }
-        },
-        "Armor": {
-          "$type": "Armor, Assembly-CSharp",
-          "Durability": 95
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 1,
-      "Name": "Item_2",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Armor": {
-          "$type": "Armor, Assembly-CSharp",
-          "Durability": 95
-        },
-        "Consumable": {
-          "$type": "Consumable, Assembly-CSharp",
-          "ConsumableInt": 1235,
-          "Effects": {
-            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-            "$values": [
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22
-            ]
-          }
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 3,
-      "Name": "Item_3",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Armor": {
-          "$type": "Armor, Assembly-CSharp",
-          "Durability": 95
-        },
-        "Consumable": {
-          "$type": "Consumable, Assembly-CSharp",
-          "ConsumableInt": 1235,
-          "Effects": {
-            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-            "$values": [
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22
-            ]
-          }
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 4,
-      "Name": "Item_3",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Armor": {
-          "$type": "Armor, Assembly-CSharp",
-          "Durability": 95
-        },
-        "Consumable": {
-          "$type": "Consumable, Assembly-CSharp",
-          "ConsumableInt": 1235,
-          "Effects": {
-            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-            "$values": [
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22
-            ]
-          }
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 2,
-      "Name": "Item_4",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Armor": {
-          "$type": "Armor, Assembly-CSharp",
-          "Durability": 95
-        },
-        "Consumable": {
-          "$type": "Consumable, Assembly-CSharp",
-          "ConsumableInt": 1235,
-          "Effects": {
-            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-            "$values": [
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22,
-              99,
-              12,
-              53,
-              22
-            ]
-          }
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 0,
-      "Name": "Empty",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Equippable": {
-          "$type": "Equippable, Assembly-CSharp",
-          "SlotType": 1
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 5,
-      "Name": "Item_8",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Equippable": {
-          "$type": "Equippable, Assembly-CSharp",
-          "SlotType": 1
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 11,
-      "Name": "Item_11",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Equippable": {
-          "$type": "Equippable, Assembly-CSharp",
-          "SlotType": 2
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 25,
-      "Name": "Item_25",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Equippable": {
-          "$type": "Equippable, Assembly-CSharp",
-          "SlotType": 3
-        }
-      }
-    },
-    {
-      "$type": "Item, Assembly-CSharp",
-      "ID": 32,
-      "Name": "item_5",
-      "Type": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemType, Assembly-CSharp]], mscorlib",
-        "BaseType": {
-          "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "BTP"
-        },
-        "Equippable": {
-          "$type": "Equippable, Assembly-CSharp",
-          "SlotType": 6
-        },
-        "Consumable": {
-          "$type": "Consumable, Assembly-CSharp",
-          "ConsumableInt": 1235,
-          "Effects": {
-            "$type": "System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib",
-            "$values": [
-              99,
-              12,
-              53,
-              22
-            ]
-          }
-        },
-        "Armor": {
-          "$type": "Armor, Assembly-CSharp",
-          "Durability": 95
-        }
+[
+  {
+    "ID": 0,
+    "Name": "item_6",
+    "Type": {
+      "BaseType": {
+        "$type": "BaseType, Assembly-CSharp",
+        "BaseTypeString": "boots"
+      },
+      "Equippable": {
+        "$type": "Equippable, Assembly-CSharp",
+        "SlotType": 6
       }
     }
-  ]
-}
+  },
+  {
+    "ID": 0,
+    "Name": "item_11",
+    "Type": {
+      "BaseType": {
+        "$type": "BaseType, Assembly-CSharp",
+        "BaseTypeString": "bodyArmor"
+      },
+      "Equippable": {
+        "$type": "Equippable, Assembly-CSharp",
+        "SlotType": 4
+      }
+    }
+  },
+  {
+    "ID": 0,
+    "Name": "item_10",
+    "Type": {
+      "BaseType": {
+        "$type": "BaseType, Assembly-CSharp",
+        "BaseTypeString": "Helmet"
+      },
+      "Equippable": {
+        "$type": "Equippable, Assembly-CSharp",
+        "SlotType": 3
+      }
+    }
+  },
+  {
+    "ID": 0,
+    "Name": "item_15",
+    "Type": {
+      "BaseType": {
+        "$type": "BaseType, Assembly-CSharp",
+        "BaseTypeString": "Potion"
+      },
+      "Consumable": {
+        "$type": "Consumable, Assembly-CSharp",
+        "ConsumableInt": 1235,
+        "Effects": [
+          99,
+          12,
+          53,
+          22
+        ]
+      }
+    }
+  }
+]

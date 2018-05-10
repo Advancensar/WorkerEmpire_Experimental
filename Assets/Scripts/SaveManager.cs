@@ -3,24 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class SaveManager {
-    
-    public static Dictionary<string, Dictionary<int, ItemObjectData>> Inventory = new Dictionary<string, Dictionary<int, ItemObjectData>>();
 
+    public static void SaveEverything()
+    {
+        SaveHouseData();
+        SavePlayerInventories();
+    }
+    
     public static void SaveHouseData()
     {
-        HouseSaveManager.SavePlayerHouseData();
+        CityManager.Instance.SavePlayerHouseData();
     }
     public static void LoadHouseData()
     {
-        HouseSaveManager.LoadPlayerHouseData();
+        CityManager.Instance.LoadPlayerHouseData();
     }
     public static void SavePlayerInventories()
     {
-        InventorySaveManager.SaveAllInventories();
+        InventoryManager.Instance.SaveAllInventories();
     }
     public static void LoadPlayerInventories()
     {
-        InventorySaveManager.LoadAllInventories();
+        InventoryManager.Instance.LoadAllInventories();
     }
 
 }

@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum SlotType
-{
-    None,
-    Storage,
-    CharacterInventory
-}
-
-public enum AcceptedItemType
 {
     All,
     MainHand,
@@ -26,69 +16,64 @@ public enum AcceptedItemType
 }
 
 public class Slot : MonoBehaviour, IPointerClickHandler 
-{
-    public static readonly int inventoryOffset = 6;
-
-    public static Dictionary<int, GameObject> Slots = new Dictionary<int, GameObject>();
-
+{    
     public GameObject HeldItem;
+    public string InventoryName;
     public SlotType SlotType;
-    public AcceptedItemType AcceptedItemType;
     public int SlotNumber;
 
-    static GameObject ItemInMotion;
     static GameObject OldSlot;
+    static GameObject ItemInMotion;
 
-    private void Awake()
+    private void Update()
     {
-        SlotNumber = transform.GetSiblingIndex();
 
-        //if (SlotType != SlotType.None)
-        //{
-        //    if (!SaveManager.Inventory.ContainsKey(gameObject.tag))
-        //    {
-        //        SaveManager.Inventory.Add(gameObject.tag, new Dictionary<int, ItemObjectData>());
-        //    }
-        //    SaveManager.Inventory[gameObject.tag].Add(SlotNumber, gameObject);
-        //}
-        
-        ////If it's player inventory.
-        //if (gameObject.tag == "CharacterItem")
-        //{
-        //    ////Set the storage inventory offset if it's not has been set.
-        //    //if (inventoryOffset == 0)
-        //    //    inventoryOffset = transform.parent.childCount;
-
-        //    SlotNumber = transform.GetSiblingIndex();
-        //    Slots.Add(SlotNumber, gameObject);
-        //}
-        //else if (SlotType == SlotType.Storage) //If it's storage inventory
-        //{
-        //    SlotNumber = (transform.GetSiblingIndex()) + inventoryOffset;
-        //    Slots.Add(SlotNumber, gameObject);
-        //}
-        //else
-        //{
-        //    //Do nothing
-        //    //Debug.Log(SlotType);
-        //}
     }
 
+
+    
     void OnTransformChildrenChanged()
     {
+        if (SlotNumber == -99) // Don't do anything if it's the trash can
+            return;
+        
         if (transform.childCount > 0)
         {
             HeldItem = FirstChildWithItemObject();
             if (HeldItem != null)
             {
                 HeldItem.GetComponent<RectTransform>().localPosition = Vector2.zero;
-                HeldItem.GetComponent<ItemObject>().itemObjectData.SlotNumber = SlotNumber;
-                //Storage.Instance.Items.Add(HeldItem.GetComponent<ItemObject>());
+                HeldItem.GetComponent<RectTransform>().localScale = Vector3.one;
+
+                var iod = HeldItem.GetComponent<ItemObject>().ItemObjectData;
+                var inventory = InventoryManager.Instance.GetInventoryByName(InventoryName);
+
+                var oldSlotNumber = iod.SlotNumber;
+                var oldInventoryName = iod.InventoryName;
+
+                iod.SlotNumber = SlotNumber;
+                iod.InventoryName = InventoryName;
+
+                if (!(oldSlotNumber == SlotNumber && oldInventoryName == iod.InventoryName))
+                {
+                    if (oldSlotNumber == -77) // -77 means we spawned an item?
+                    {
+                        inventory.AddItemToSlot(SlotNumber, iod);
+                    }
+                    else if (inventory.Items.ContainsKey(SlotNumber)) //Swap
+                    {
+                        inventory.AddItemToSlot(SlotNumber, iod);
+                    }
+                    else if (!inventory.Items.ContainsKey(SlotNumber)) //move
+                    {
+                        inventory.AddItemToSlot(SlotNumber, iod);
+                        InventoryManager.Instance.GetInventoryByName(oldInventoryName).Items.Remove(oldSlotNumber);
+                    }
+                }
             }
         }
         else
         {
-            //Storage.Instance.Items.Remove(HeldItem.GetComponent<ItemObject>());
             HeldItem = null;
         }
     }
@@ -145,11 +130,13 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     bool CanSwap(GameObject slot, GameObject oldSlot, GameObject item)
     {
         var oldSlotType = oldSlot.GetComponent<Slot>().SlotType;
-        var itemSlotType = item.GetComponent<ItemObject>().itemObjectData.item.slotType();
-
-        if (SlotType == SlotType.Storage && oldSlotType == SlotType.Storage)
+        var itemSlotType = item.GetComponent<ItemObject>().ItemObjectData.item.slotType();
+        
+        if (SlotType == SlotType.All && oldSlotType == SlotType.All)
             return true;
         if (SlotType == itemSlotType && oldSlotType == itemSlotType)
+            return true;
+        if (slot.GetComponent<Slot>().HeldItem.GetComponent<ItemObject>().ItemObjectData.item.slotType() == itemSlotType)
             return true;
 
         return false;
@@ -157,9 +144,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     //Check if the target slot accepts the item in motion
     bool CanMove(GameObject slot, GameObject item)
     {
-        if (AcceptedItemType == AcceptedItemType.All)
+        if (SlotType == SlotType.All)
             return true;
-        if (SlotType == item.GetComponent<ItemObject>().itemObjectData.item.slotType())
+        if (SlotType == item.GetComponent<ItemObject>().ItemObjectData.item.slotType())
             return true;
 
         return false;

@@ -178,12 +178,64 @@ public static class CustomInspector
 
     static Dictionary<int, bool> foldout = new Dictionary<int, bool>();
 
+    private static int tempval = 0;
     static void SerializeList(MemberInfo mi, object obj, object list)
     {
         var liste = list as IList;
         int hashCode = list.GetHashCode();
         if (!foldout.ContainsKey(hashCode))
             foldout.Add(hashCode, false);
+
+        var a = liste.Count;
+        //Debug.Log((liste.GetType().GetGenericArguments()[0]));
+
+        var ListSize = liste.Count;
+        GUI.SetNextControlName("List Size");
+        ListSize = EditorGUILayout.IntField("List Size", ListSize);
+
+        if (ListSize != liste.Count)
+        {
+            while (ListSize > liste.Count)
+            {
+                liste.Insert(liste.Count, Activator.CreateInstance(liste.GetType().GetGenericArguments()[0]));
+            }
+            while (ListSize < liste.Count)
+            {
+                liste.RemoveAt(liste.Count - 1);
+            }
+            Debug.Log("Focus : " + GUI.GetNameOfFocusedControl());
+
+            if (GUI.GetNameOfFocusedControl() != "List Size")
+            {
+                Debug.Log("Not List size? : "  + GUI.GetNameOfFocusedControl());
+                SetValue(mi, obj, liste);
+            }
+        }
+
+
+        //a = EditorGUILayout.IntField("Size", a);
+        //if (a != liste.Count)
+        //{
+        //    tempval = a;
+        //    Debug.Log(a);
+        //}
+
+        //if (a > liste.Count)
+        //{
+        //    Debug.Log("haha");
+        //    for (int i = 0; i < liste.Count - a; i++)
+        //    {
+        //        Debug.Log((liste.GetType()));
+        //        //Activator.CreateInstance(liste.GetType());
+        //        //liste.Add()
+        //    }
+        //    //liste.AddRange();
+        //}
+        //else
+        //{
+            
+        //}
+        //SetValue(mi, obj, liste);
 
         foldout[hashCode] = EditorGUILayout.Foldout(foldout[hashCode], mi.Name, true);
         EditorGUI.indentLevel++;
@@ -315,7 +367,7 @@ public static class CustomInspector
         EditorGUI.indentLevel++;
         if (foldout[hashCode])
         {
-            foreach (var key in dict.Keys)
+            foreach (var key in dict.Keys) // TODO : dict.Keys.ToList() to modify the dictionary runtime 
             {
                 var type = dict[key].GetType();
                 string label = "[" + key + "]";

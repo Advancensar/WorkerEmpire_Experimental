@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 [Serializable]
@@ -8,11 +9,13 @@ public class House : MonoBehaviour
 {
     public List<HouseData> HouseDatas = new List<HouseData>()
     {
-        new HouseData(Current:0, Max:0, ContributionPoint:0, Type:"Bank"),
-        new HouseData(Current:0, Max:0, ContributionPoint:0, Type:"Lodging"),
-        new HouseData(Current:0, Max:0, ContributionPoint:0, Type:"Blacksmith"),
-        new HouseData(Current:0, Max:0, ContributionPoint:0, Type:"Jeweler"),
+        new HouseData(Max:0, ContributionPoint:0, Type:"Bank"),
+        new HouseData(Max:0, ContributionPoint:0, Type:"Lodging"),
+        new HouseData(Max:0, ContributionPoint:0, Type:"Blacksmith"),
+        new HouseData(Max:0, ContributionPoint:0, Type:"Jeweler"),
     };
+
+    public PlayerHouseData PlayerHouseData = new PlayerHouseData();
 
     public string Address;
     public HouseType HouseType;
@@ -20,87 +23,66 @@ public class House : MonoBehaviour
     private void Awake()
     {
         Address = transform.parent.parent.parent.name + "/" + transform.parent.name + "/" + gameObject.name;
-        HouseSaveManager.Houses.Add(Address, this);
+
     }
 
-    void Start()
+    private void Start()
     {
+        CityManager.Instance.Cities[transform.parent.parent.parent.name].Houses.Add(Address, this);
         foreach (var data in HouseDatas)
         {
-            if (data.Current > 0)
+            if (PlayerHouseData.Current > 0)
             {
                 var type = CustomUtilities.GetType(data.Type);
-                var obj = (HouseType)Activator.CreateInstance(type);
-                Debug.Log("Current house type is : " + type);
+                HouseType = (HouseType)Activator.CreateInstance(type);
+                break;
+                //Debug.Log("Current house type is : " + type);
             }
-        }        
+        }
     }
 
-    public PlayerHouseData GetHouseData()
+    public HouseData GetHouseDataByType(string houseType)
     {
-        var houseData = new PlayerHouseData();
-
-        for (int i = 0; i < HouseDatas.Count; i++)
+        foreach (var houseData in HouseDatas)
         {
-            if (HouseDatas[i].Current > 0)
+            if (houseType == houseData.Type)
             {
-                houseData.Current = HouseDatas[i].Current;
-                houseData.HouseType = HouseDatas[i].Type;
                 return houseData;
             }
         }
 
-        houseData.HouseType = "Empty";
-        houseData.Current = 0;
-        return houseData;
+        return null;
     }
 
-    public HouseData GetHouseDataByName(string type)
+    public void Build(string type)
     {
-        for (int i = 0; i < HouseDatas.Count; i++)
+        if (type != PlayerHouseData.HouseType && PlayerHouseData.Current > 0)
         {
-            if (HouseDatas[i].Type == type)
-            {
-                return HouseDatas[i];
-            }
+            Sell(PlayerHouseData.HouseType);
         }
-        return new HouseData(-1, -1, 0, "");
+
+        if (PlayerHouseData.Current == 0)
+        {
+            PlayerHouseData.Current = 1;
+            PlayerHouseData.HouseType = type;
+        }
+        else // upgrade
+        {
+            Upgrade();
+        }
+
     }
 
-
-    void Build(string type)
+    public void Upgrade()
     {
-        int typeCount = 0;
-        int index = 0;
+        PlayerHouseData.Current++;
 
-        for (int i = 0; i < HouseDatas.Count; i++)
-        {
-            if (HouseDatas[i].Current > 0)
-            {
-                typeCount++;
-                index = i;
-            }
-        }
-        if (typeCount <= 1)
-        {
-            if (HouseDatas[index].Type == type && HouseDatas[index].Current < HouseDatas[index].Max)
-            {
-                HouseDatas[index].Current++;
-            }
-        }
     }
 
-    void Sell(string Type)
+    public void Sell(string Type)
     {
-        foreach (var data in HouseDatas)
-        {
-            if (data.Type == Type)
-            {
-                data.Current = 0;
-                HouseType = null;
-                break;
-            }
-        }
+        PlayerHouseData = new PlayerHouseData();
+
     }
 
 

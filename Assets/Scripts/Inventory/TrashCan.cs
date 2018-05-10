@@ -11,14 +11,20 @@ public class TrashCan : MonoBehaviour {
         Slot = gameObject.GetComponent<Slot>();
     }
 
-    private void Update()
+    private void OnTransformChildrenChanged()
     {
         if (Slot.HeldItem != null)
         {
-            Debug.Log("Removed : " + Slot.HeldItem.name);
+            if (transform.childCount > 1)
+            {
+                //Debug.Log("Removed : " + Slot.HeldItem.name);
+                var iod = Slot.HeldItem.GetComponent<ItemObject>().ItemObjectData;
+                Destroy(Slot.HeldItem);
+                InventoryManager.Instance.GetInventoryByName(iod.InventoryName).RemoveItem(iod.SlotNumber);
 
-            Destroy(Slot.HeldItem);
+            }
+
         }
-    }
+    }    
 
 }

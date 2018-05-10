@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-    
-    public static GameManager Instance
-    {
-        get { return instance; }
-    }
+    public static GameManager Instance { get; private set; }
+
+    public InventoryManager InventoryManager;
+
 
     private void Start()
     {
+        //string path = Application.streamingAssetsPath + @"/Database/Item_Database.json";
+        //FileTool.TEST(path);
         //Storage.Instance.LoadInventory();
-        //LoadPlayerHouseData();
+        LoadPlayerHouseData();
     }
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
 
         LoadItemDB();
         //Storage.Instance.InstantiateSlots();
-
     }
 
     void Load()
@@ -57,10 +56,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadPlayerHouseData()
     {
-        HouseSaveManager.LoadPlayerHouseData();
+        CityManager.Instance.LoadPlayerHouseData();
     }
-
-
 
     public void btn()
     {
@@ -69,8 +66,10 @@ public class GameManager : MonoBehaviour
 
     public void save()
     {
+        SaveManager.SaveEverything();
         //Storage.Instance.SaveInventory();
     }
+
     public void load()
     {
         //Storage.Instance.LoadInventory();

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemObject : MonoBehaviour {
+public class ItemObject : MonoBehaviour
+{
 
-    public ItemObjectData itemObjectData = new ItemObjectData();
+    public ItemObjectData ItemObjectData = new ItemObjectData();
 
     private void Awake()
     {
@@ -22,8 +23,8 @@ public class ItemObject : MonoBehaviour {
 
     public void LoadItemInfo()
     {
-        gameObject.name = itemObjectData.item.Name;
+        gameObject.name = ItemObjectData.item.Name;
         var img = GetComponentInChildren<Image>();
-        img.sprite = itemObjectData.item.Image();
+        img.sprite = ItemObjectData.item.Image();
     }
 }

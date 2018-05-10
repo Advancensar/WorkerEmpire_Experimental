@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -35,7 +36,7 @@ public static class FileTool
 
 
         return JsonConvert.DeserializeObject<T>(File.ReadAllText(filePath),
-                                                            new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
+                                                            new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
     }
 
     public static void SaveFileAsJson(string filePath, object obj)
@@ -56,7 +57,7 @@ public static class FileTool
                                                         Formatting.Indented,
                                                         new JsonSerializerSettings
                                                         {
-                                                            TypeNameHandling = TypeNameHandling.All,
+                                                            TypeNameHandling = TypeNameHandling.Auto,
                                                             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                                                         }));
     }
@@ -90,7 +91,7 @@ public static class FileTool
     static void UnpackStreamingAsset(string filePath)
     {
 
-    }    
+    }
 
     
 }

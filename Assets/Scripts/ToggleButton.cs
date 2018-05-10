@@ -6,7 +6,15 @@ public class ToggleButton : MonoBehaviour {
 
     public void ToggleActive(GameObject go)
     {
-        go.SetActive(!go.activeSelf);
+        var content = go.GetComponent<InventoryWindow>().transform.Find("Viewport").Find("Content");
+        foreach (Transform t in content)
+        {
+            if (t.childCount > 0)
+            {
+                Destroy(t.GetChild(0).gameObject);
+            }
+        }
+        //go.SetActive(!go.activeSelf);
     }
     
 }

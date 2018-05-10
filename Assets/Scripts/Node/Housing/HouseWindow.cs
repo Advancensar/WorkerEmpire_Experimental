@@ -5,9 +5,11 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class HouseWindow : MonoBehaviour {
-
+public class HouseWindow : MonoBehaviour
+{
     public GameObject HouseUsagePrefab;
+    public GameObject BuyButton;
+    public GameObject SelectedUsage;
 
     string AssetPath = @"Sprites/UI/House";
     House house;
@@ -15,16 +17,21 @@ public class HouseWindow : MonoBehaviour {
 
     Transform UsageContent;
 
+    void Start()
+    {
+        UsageContent = transform.Find("Scroll View").Find("Viewport").Find("Content");
+    }
+
     public void LoadWindowInfo(House house)
     {
+        SelectedUsage = null;
+
         if (UsageContent != null)
             ClearContent();
 
         this.house = house;
-        var houseData = house.GetHouseData();
-        Banner = Resources.Load<Image>(AssetPath + houseData.HouseType);
-
-        UsageContent = transform.Find("Scroll View").Find("Viewport").Find("Content");
+        //var houseData = house.GetHouseData();
+        Banner = Resources.Load<Image>(AssetPath + "/" + house.PlayerHouseData.HouseType);
 
         //Load data for each usage
         foreach (var data in house.HouseDatas)
@@ -35,28 +42,39 @@ public class HouseWindow : MonoBehaviour {
                 Usage.GetComponent<Button>().onClick.AddListener(OnSelectedChanged);
 
                 Usage.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = data.Type;
-
-                var level = Usage.transform.Find("Level");
-
-                for (int i = 0; i < level.childCount; i++)
-                {
-                    var child = level.GetChild(i);
-                    child.gameObject.SetActive(false);
-
-                    if (data.Max > 0 && data.Max-1 >= i)
-                    {
-                        child.gameObject.SetActive(true);
-
-                        if (data.Current > 0 && data.Current-1 >= i)
-                        {
-                            level.GetChild(i).GetComponent<Image>().color = Color.red;
-                        }
-                    }
-
-                }
+                Usage.name = data.Type;
+                test(Usage);
             }
-            //usage.transform.Find("Level");
-        }        
+        }
+        RefreshButton();
+    }
+
+    void test(GameObject Usage)
+    {
+        var level = Usage.transform.Find("Level");
+        var data = house.GetHouseDataByType(Usage.name);
+
+        for (int i = 0; i < level.childCount; i++)
+        {
+            var child = level.GetChild(i);
+            child.GetComponent<Image>().color = Color.white;
+            child.gameObject.SetActive(false);
+
+            if (data.Max > 0 && data.Max - 1 >= i)
+            {
+                child.gameObject.SetActive(true);
+
+                if (data.Type == house.PlayerHouseData.HouseType)
+                {
+                    if (house.PlayerHouseData.Current > 0 && house.PlayerHouseData.Current - 1 >= i)
+                    {
+                        child.GetComponent<Image>().color = Color.red;
+                    }
+                }
+
+            }
+
+        }
     }
 
 
@@ -71,44 +89,93 @@ public class HouseWindow : MonoBehaviour {
 
     public void OnSelectedChanged()
     {
-        var Selected = EventSystem.current.currentSelectedGameObject;
-        var type = Selected.GetComponentInChildren<TextMeshProUGUI>().text;
-        Debug.Log(type);
-
-        var data = house.GetHouseDataByName(type);
-
-        if (data.Current == 0)
+        if (SelectedUsage != null)
         {
-            //button text = buy
-            //Disable sell button
+            SelectedUsage.GetComponent<Image>().color = Color.white;
         }
-        else if (data.Current < data.Max)
+        SelectedUsage = EventSystem.current.currentSelectedGameObject;
+        var type = SelectedUsage.GetComponentInChildren<TextMeshProUGUI>().text;
+        SelectedUsage.GetComponent<Image>().color = Color.red;
+        
+        //SelectedUsage = house.GetHouseDataByType(type);
+        RefreshButton();
+    }
+
+    void RefreshButton()
+    {
+        if (SelectedUsage == null)
         {
-            if (data.Type == house.GetHouseData().HouseType)
-            {
-                //Button text = upgrade
-            }
-            else
-            {
-                //Button text = change usage
-            }
+            return;
+        }
+        if (house.GetHouseDataByType(SelectedUsage.name).Type == house.PlayerHouseData.HouseType)
+        {
+            BuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "UPGRADE";
         }
         else
         {
-            //disable buy button
+            BuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "BUY";
         }
+        //if (house.PlayerHouseData.Current == 0)
+        //{
+        //    //BuyButton.SetActive(true);
+        //    BuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "BUY";
+        //    //button text = buy
+        //    //Disable sell button
+        //}
+        //else if (house.PlayerHouseData.Current < SelectedUsage.Max)
+        //{
+        //    //BuyButton.SetActive(true);
+        //    if (house.PlayerHouseData.HouseType == SelectedUsage.Type)
+        //    {
+        //        BuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "UPGRADE";
+        //        //Button text = upgrade
+        //    }
+        //    else
+        //    {
+        //        //Button text = change usage
+        //    }
+        //}
+        //else
+        //{
+        //    //BuyButton.SetActive(false);
+        //    //disable buy button
+        //}
 
-        switch (data.Type)
-        {
-            case "Storage":
-                //Window info = storage info
+        //switch (SelectedUsage.Type)
+        //{
+        //    case "Storage":
+        //        //Window info = storage info
 
-                break;
-            default:
-                break;
-        }
+        //        break;
+        //    default:
+        //        break;
+        //}
 
     }
+
+    public void BuyButtonClick()
+    {
+        if (SelectedUsage == null) return;
+
+        house.Build(house.GetHouseDataByType(SelectedUsage.name).Type);
+        foreach (Transform usage in UsageContent)
+        {
+            test(usage.gameObject);
+        }
+        RefreshButton();
+    }
+
+    public void SellButtonClick()
+    {
+        if (SelectedUsage == null) return;
+
+        house.Sell(house.GetHouseDataByType(SelectedUsage.name).Type);
+        test(SelectedUsage);
+        RefreshButton();
+
+    }
+
+
 
 }
     

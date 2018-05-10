@@ -1,0 +1,14 @@
+{
+  "Velia/Cumhuriyet/4 (3)": {
+    "Current": 1,
+    "HouseType": "Jeweler"
+  },
+  "Velia/Cumhuriyet/4 (2)": {
+    "Current": 1,
+    "HouseType": "Blacksmith"
+  },
+  "Velia/Cumhuriyet/4": {
+    "Current": 1,
+    "HouseType": "Bank"
+  }
+}

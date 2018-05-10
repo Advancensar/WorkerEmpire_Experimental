@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceNode : Node {
-
+public class SubNode : Node
+{
     List<Item> Resources = new List<Item>();
 
 }

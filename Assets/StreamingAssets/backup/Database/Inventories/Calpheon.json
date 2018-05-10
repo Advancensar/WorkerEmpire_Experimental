@@ -1,0 +1,38 @@
+[
+  {
+    "InventoryName": "",
+    "SlotNumber": -99,
+    "item": {
+      "ID": 11,
+      "Name": "Item_11",
+      "Type": {
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "BTP"
+        },
+        "Equippable": {
+          "$type": "Equippable, Assembly-CSharp",
+          "SlotType": 2
+        }
+      }
+    }
+  },
+  {
+    "InventoryName": "",
+    "SlotNumber": -99,
+    "item": {
+      "ID": 5,
+      "Name": "Item_8",
+      "Type": {
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "BTP"
+        },
+        "Equippable": {
+          "$type": "Equippable, Assembly-CSharp",
+          "SlotType": 1
+        }
+      }
+    }
+  }
+]

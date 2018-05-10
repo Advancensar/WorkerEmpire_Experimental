@@ -23,12 +23,12 @@ public class ItemObjectInspector : Editor {
             var type = CustomUtilities.GetType(selectedType.ToString());
             var obj = (ItemType)Activator.CreateInstance(type);
 
-            ((ItemObject)target).itemObjectData.item.Type.Add(type.ToString(), obj);
+            ((ItemObject)target).ItemObjectData.item.Type.Add(type.ToString(), obj);
         }
         if (GUILayout.Button("Remove Type"))
         {
             var type = CustomUtilities.GetType(selectedType.ToString());
-            ((ItemObject)target).itemObjectData.item.Type.Remove(type.ToString());
+            ((ItemObject)target).ItemObjectData.item.Type.Remove(type.ToString());
         }
 
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);        
@@ -37,7 +37,7 @@ public class ItemObjectInspector : Editor {
 
         //GUILayout.Box(temp.GetComponentInChildren<Image>().mainTexture);
 
-        CustomInspector.SerializeObject(temp.itemObjectData);
+        CustomInspector.SerializeObject(temp.ItemObjectData);
         base.OnInspectorGUI();
     }
     

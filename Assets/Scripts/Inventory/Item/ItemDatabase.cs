@@ -5,13 +5,12 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
 
-[System.Serializable]
 public class ItemDatabase
 {
     private static ItemDatabase instance = null;
     private static readonly object padlock = new object();
 
-    private string PATH = @"/Database/Item_Database.json";
+    private const string PATH = @"/Database/Item_Database.json";
 
     public List<Item> Items = new List<Item>();
 
@@ -23,7 +22,10 @@ public class ItemDatabase
             {
                 if (instance == null)
                 {
-                    instance = new ItemDatabase();
+                    instance = new ItemDatabase
+                    {
+                        Items = new List<Item>()
+                    };
                     instance.LoadDB();
                 }
                 return instance;
@@ -71,12 +73,23 @@ public class ItemDatabase
             Instance.Items = new List<Item>();
         }
         Instance.Items.Add(item);
+
+        //SaveAddedItemToDB();
+        SaveDB();
+    }
+
+    private void SaveAddedItemToDB()
+    {
+        //Parse the database file
+        //Add to the end of the file instead of replacing the whole file? HOW tho?
+
     }
 
     public Item RandomItem()
     {
-        var result = Items.Select(x => x.ID).ToList();
-        return GetItem(result[Random.Range(0, result.Count)]);
+        return Items[Random.Range(0, Items.Count)];
+        //var result = Items.Select(x => x.ID).ToList();
+        //return GetItem(result[Random.Range(0, result.Count)]);
     }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    public Item item;
+    public List<int> asdas = new List<int>() {1, 2, 4};
     //public string testString;//= "TestString";
     //public int testInt = 1;
     //public Color col = new Color();

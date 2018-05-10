@@ -6,129 +6,44 @@ using UnityEngine;
 public class Inventory
 {
     public string InventoryName;
-    public int InventorySize = 23;
-    private string PATH = @"/Database/";
-    
+    public int InventorySize = 24;
+    public Dictionary<int, ItemObjectData> Items = new Dictionary<int, ItemObjectData>();
 
-    //public void SaveInventory(string name)
-    //{
-    //    var templist = new List<ItemObjectData>();
-    //    foreach (var key in SaveManager.Inventory[name].Keys)
-    //    {
-    //        templist.Add(SaveManager.Inventory[name][key].GetComponent<Slot>().HeldItem.GetComponent<ItemObject>().itemObjectData);
-    //    }
-    //    FileTool.SaveFileAsJson(name, templist);
-    //}
-
-    public void CreateInventory(string inventoryName)
+    public void AddItemToSlot(int slotNumber, ItemObjectData itemObjectData)
     {
-        InventoryName = inventoryName;
-        if (!SaveManager.Inventory.ContainsKey(inventoryName))
+        if (Items.ContainsKey(slotNumber))
         {
-            SaveManager.Inventory.Add(inventoryName, new Dictionary<int, ItemObjectData>());
+            //Debug.Log("Removed : " + slotNumber + "iod : " + Items[slotNumber].item.Name);
+            Items.Remove(slotNumber);
         }
-    }
-    
-    public void SaveInventory()
-    {
-        PATH += InventoryName + ".json";
-        var templist = new List<ItemObjectData>();
-
-        foreach (var slotNumber in SaveManager.Inventory[InventoryName].Keys)
-        {
-            templist.Add(SaveManager.Inventory[InventoryName][slotNumber]);
-        }
-
-        FileTool.SaveFileAsJson(PATH, templist);
+        Items.Add(slotNumber, itemObjectData);
     }
 
-    public void LoadInventory()
+    public void RemoveItem(int slotNumber)
     {
-        PATH += InventoryName + ".json";
-        Debug.Log("LoadInventory: " + PATH);
-        var tempItems = FileTool.LoadObjectFromJson<List<ItemObjectData>>(PATH);
+        //Debug.Log("Slot number : " + slotNumber);
 
-        if (tempItems.Count < 1)
-            return;
-
-        for (int i = 0; i < tempItems.Count; i++)
+        if (Items.ContainsKey(slotNumber))
         {
-            SaveManager.Inventory[InventoryName].Add(tempItems[i].SlotNumber, tempItems[i]);
+            Items.Remove(slotNumber);
         }
-
-        AddToList();
     }
 
-    public void AddToList()
+    public void MoveItem(int fromSlot, int toSlot)
     {
-        InventorySaveManager.Inventories.Add(this);
-    }
-
-    public void ClearInventory()
-    {
-        foreach (var key in Slot.Slots.Keys)
+        if (Items.ContainsKey(toSlot))//Swap
         {
-            GameObject.Destroy(Slot.Slots[key].GetComponent<Slot>().HeldItem);
+            var tempItem = Items[fromSlot];
+            Items[fromSlot] = Items[toSlot];
+            Items[toSlot] = tempItem;
         }
-        //Instance.Items.Clear();
-    }
-
-
-    int FindFirstAvailableSlot()
-    {
-        for (int i = Slot.inventoryOffset; i < Slot.Slots.Count; i++)
-        {
-            if (Slot.Slots[i].GetComponent<Slot>().HeldItem == null)
-            {
-                //Debug.Log("Slot found : " + i);
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    void AddItemToSlot(int id, GameObject item)
-    {
-        if (Slot.Slots[id].GetComponent<Slot>().HeldItem == null)
-        {
-            item.transform.SetParent(Slot.Slots[id].transform, false);
-            item.transform.localScale = Vector3.one;
-        }
-        //if (Slots[id].GetComponent<SlotHandler>().HoldItem == null)
-        //{
-        //    var tempItem = Instantiate(itemPrefab);
-        //    tempItem.GetComponent<ItemObject>().item = item;
-        //    tempItem.name = item.itemName;
-        //    tempItem.transform.SetParent(SlotList[id].transform);
-        //    tempItem.transform.localScale = Vector3.one;
-        //}
         else
         {
-            GameObject.Destroy(item);
-            Debug.Log("Slot is full" + " " + Slot.Slots[id].GetComponent<Slot>().SlotNumber);
+            Items[toSlot] = Items[fromSlot];
+            Items.Remove(fromSlot);
         }
     }
 
 
-
-
-    public void AddRandomItemToRandomSlot()
-    {
-        int id = FindFirstAvailableSlot();
-        //int itemid = Random.Range(0, ItemDatabase.Instance.Items.Count-1);
-        if (id >= 0)
-        {
-            var randomItem = ItemDatabase.Instance.RandomItem();
-            //var item = ItemDatabase.GetItemCopy(UnityEngine.Random.Range(0, ItemDatabase.GetDBLength()));
-            var itemObjectGameObject = GameObject.Instantiate(Resources.Load(@"Prefabs/UI/ItemObject")) as GameObject;
-            itemObjectGameObject.GetComponent<ItemObject>().itemObjectData.item = randomItem;
-            //item.Name = "item_1";
-            //item.ID = 5;
-            itemObjectGameObject.GetComponent<ItemObject>().LoadItemInfo();
-            AddItemToSlot(id, itemObjectGameObject);
-            //Items.Add(itemObjectGameObject.GetComponent<ItemObject>());
-        }
-        else Debug.Log("Inventory is full");
-    }
 
 }

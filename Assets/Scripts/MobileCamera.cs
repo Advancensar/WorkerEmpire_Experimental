@@ -6,6 +6,13 @@ using UnityEngine.UI;
 
 public class MobileCamera : MonoBehaviour
 {
+    public bool CityInspectMode;
+    public Vector3 CityPos;
+    public bool hasLerped = false;
+
+    private static readonly float LerpSpeed = 3f;
+    private static readonly Vector3 CameraBounds = new Vector3(50, 20, 50);
+    
     private static readonly float PanSpeed = 50f;
     private static readonly float ZoomSpeedTouch = 0.1f;
     private static readonly float ZoomSpeedMouse = 0.5f;
@@ -22,9 +29,11 @@ public class MobileCamera : MonoBehaviour
     private bool wasZoomingLastFrame; // Touch mode only
     private Vector2[] lastZoomPositions; // Touch mode only
 
+
     void Awake()
     {
         cam = GetComponent<Camera>();
+        CityPos = transform.position;
     }
 
     void Update()
@@ -39,7 +48,17 @@ public class MobileCamera : MonoBehaviour
             {
                 HandleMouse();
             }
+            if (CityInspectMode)
+            {
+                if (hasLerped)
+                    CheckBounds();
+                else
+                    LerpCamera();
+
+            }
         }
+
+
     }
 
     void HandleTouch()
@@ -121,8 +140,9 @@ public class MobileCamera : MonoBehaviour
 
         // Ensure the camera remains within bounds.
         Vector3 pos = transform.position;
-        //pos.x = Mathf.Clamp(transform.position.x, BoundsX[0], BoundsX[1]);
-        //pos.z = Mathf.Clamp(transform.position.z, BoundsZ[0], BoundsZ[1]);
+
+        //pos.x = Mathf.Clamp(transform.position.x, pos.x + x, pos.x + x + 10);
+        //pos.z = Mathf.Clamp(transform.position.z, pos.z + z, pos.z + z + 10);
         transform.position = pos;
 
         // Cache the position
@@ -147,6 +167,44 @@ public class MobileCamera : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
+    }
+
+    void CheckBounds()
+    {
+        Bounds boundingBox = new Bounds(CityPos, CameraBounds);
+
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, boundingBox.min.x, boundingBox.max.x),
+                                        Mathf.Clamp(transform.position.y, boundingBox.min.y, boundingBox.max.y),
+                                        Mathf.Clamp(transform.position.z, boundingBox.min.z, boundingBox.max.z)
+        );
+
+    }
+
+    void OnDrawGizmos()
+    {
+        if (CityInspectMode)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(CityPos, CameraBounds);
+        }
+    }
+
+    public void LerpCamera()
+    {
+        var direction = (transform.position - CityPos).normalized;
+        var targetPos = new Vector3(-transform.forward.x * 20 + CityPos.x, CityPos.y, -transform.forward.z * 20 + CityPos.z);
+        if ((targetPos - transform.position).magnitude > 1)
+        {
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, targetPos.x, Time.deltaTime * LerpSpeed), 
+                                                Mathf.Lerp(transform.position.y, targetPos.y, Time.deltaTime * LerpSpeed), 
+                                                Mathf.Lerp(transform.position.z, targetPos.z, Time.deltaTime * LerpSpeed));
+
+        }
+        else
+        {
+            hasLerped = true;
+        }
+
     }
 }
 
