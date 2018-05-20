@@ -6,31 +6,32 @@ public class InventoryWindow : MonoBehaviour {
 
     public GameObject SlotPrefab;
     public GameObject ItemObjectPrefab;
+    public Transform slotContent;
 
     public int MaxSlot = 30;
     public Dictionary<int, GameObject> Slots = new Dictionary<int, GameObject>();
 
     private bool DynamicInventory = true;
-    private Transform slotContent;
+    //private Transform slotContent;
 
     private void Awake()
     {
-        slotContent = transform.Find("Viewport").Find("Content");
+        //slotContent = transform.Find("Viewport").Find("Content");
 
-        if (gameObject.name == "PlayerInventoryWindow")
-        {
-            DynamicInventory = false;
-            MaxSlot = slotContent.childCount;
-            var inv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().Inventory;
-            InstantiateSlots();
-            LoadWindowInfo(inv);
-        }
-        else
-        {
+        //if (gameObject.name == "PlayerInventoryWindow")
+        //{
+        //    DynamicInventory = false;
+        //    MaxSlot = slotContent.childCount;
+        //    var inv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().Inventory;
+        //    InstantiateSlots();
+        //    LoadWindowInfo(inv);
+        //}
+        //else
+        //{
             InstantiateSlots();
             LoadWindowInfo(null);
             
-        }
+        //}
         gameObject.SetActive(false);
     }
 
@@ -137,6 +138,19 @@ public class InventoryWindow : MonoBehaviour {
             }
         }
         return -1;
+    }
+
+    public void OpenWindow()
+    {
+        GameManager.Instance.MainCam.CityInspectMode = true; // We need the coords for the city inspect mode, 
+        gameObject.SetActive(true);                          // so we should provide it before enabling it
+        
+    }
+
+    public void CloseWindow()
+    {
+        GameManager.Instance.MainCam.CityInspectMode = false;
+        gameObject.SetActive(false);
     }
 
     //void AddItemToSlot(int id, GameObject item)

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CitySpriteButton : MonoBehaviour {
-
-    public GameObject StorageWindow;
-
+    
     float minimumDistance = 10;
     float maximumDistance = 100;
     float minimumDistanceScale = 1.15f;
@@ -13,7 +11,6 @@ public class CitySpriteButton : MonoBehaviour {
 
     private void Awake()
     {
-        StorageWindow = GameObject.Find("StorageWindow");
     }
 
     private void Update()
@@ -35,7 +32,7 @@ public class CitySpriteButton : MonoBehaviour {
             mc.CityPos = new Vector3(0f, 40f, 0f) + transform.position;
             mc.CityInspectMode = !mc.CityInspectMode;
             mc.hasLerped = false;
-            StorageWindow.GetComponent<InventoryWindow>().LoadWindowInfo(transform.parent.GetComponent<CityStorage>().Inventory);
+            GameManager.Instance.InventoryWindow.LoadWindowInfo(transform.parent.GetComponent<CityStorage>().Inventory);
 
         }
         //var mobileCamera = Camera.main.transform.GetComponent<MobileCamera>();

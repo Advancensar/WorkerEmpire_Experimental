@@ -11,7 +11,7 @@ public class ItemCreateWindow : EditorWindow
     private Vector2 scrollPos;
     private Texture itemTexture;
 
-    Dictionary<string, bool> selectedToggles = new Dictionary<string, bool>()
+    private Dictionary<string, bool> selectedToggles = new Dictionary<string, bool>()
     {
         { "Armor", false },
         { "Consumable", false },

@@ -147,7 +147,7 @@ public static class CustomInspector
                 value = EditorGUILayout.ObjectField((GameObject)value, type, true);
                 SetValue(memberInfo, obj, value);
             }
-#endregion
+            #endregion
             else if (type.IsGenericType)
             {
                 if (IsList(GetValue(memberInfo, obj)))
@@ -178,10 +178,11 @@ public static class CustomInspector
 
     static Dictionary<int, bool> foldout = new Dictionary<int, bool>();
 
-    private static int tempval = 0;
     static void SerializeList(MemberInfo mi, object obj, object list)
     {
         var liste = list as IList;
+        if (liste == null) return;
+
         int hashCode = list.GetHashCode();
         if (!foldout.ContainsKey(hashCode))
             foldout.Add(hashCode, false);
@@ -211,31 +212,6 @@ public static class CustomInspector
                 SetValue(mi, obj, liste);
             }
         }
-
-
-        //a = EditorGUILayout.IntField("Size", a);
-        //if (a != liste.Count)
-        //{
-        //    tempval = a;
-        //    Debug.Log(a);
-        //}
-
-        //if (a > liste.Count)
-        //{
-        //    Debug.Log("haha");
-        //    for (int i = 0; i < liste.Count - a; i++)
-        //    {
-        //        Debug.Log((liste.GetType()));
-        //        //Activator.CreateInstance(liste.GetType());
-        //        //liste.Add()
-        //    }
-        //    //liste.AddRange();
-        //}
-        //else
-        //{
-            
-        //}
-        //SetValue(mi, obj, liste);
 
         foldout[hashCode] = EditorGUILayout.Foldout(foldout[hashCode], mi.Name, true);
         EditorGUI.indentLevel++;
@@ -362,12 +338,13 @@ public static class CustomInspector
         int hashCode = dic.GetHashCode();
         if (!foldout.ContainsKey(hashCode))
             foldout.Add(hashCode, false);
-
+        
         foldout[hashCode] = EditorGUILayout.Foldout(foldout[hashCode], mi.Name, true);
         EditorGUI.indentLevel++;
+
         if (foldout[hashCode])
         {
-            foreach (var key in dict.Keys) // TODO : dict.Keys.ToList() to modify the dictionary runtime 
+            foreach (var key in dict.Keys.Cast<object>().ToList()) // TODO : dict.Keys.ToList() to modify the dictionary runtime 
             {
                 var type = dict[key].GetType();
                 string label = "[" + key + "]";
@@ -467,6 +444,19 @@ public static class CustomInspector
                 {
                     dict[key] = EditorGUILayout.ObjectField((GameObject)dict[key], type, true);
                     SetValue(mi, obj, dict);
+                }
+                else if (type.IsGenericType)
+                {
+                    if (IsList(dict[key]))
+                    {
+                        //var list = GetValue(memberInfo, obj);
+                        SerializeList(mi, obj, dict[key]);
+                    }
+                    else if (IsDictionary(dict[key]))
+                    {
+                        //var dictionary = GetValue(memberInfo, obj);
+                        SerializeDictionary(mi, obj, dict[key]);
+                    }
                 }
                 else if (type.IsEnum)
                 {

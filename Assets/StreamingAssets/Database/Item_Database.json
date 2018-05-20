@@ -56,8 +56,40 @@
           99,
           12,
           53,
+          22,
+          99,
+          12,
+          53,
           22
         ]
+      }
+    }
+  },
+  {
+    "ID": 0,
+    "Name": "Item_12",
+    "Type": {
+      "BaseType": {
+        "$type": "BaseType, Assembly-CSharp",
+        "BaseTypeString": ""
+      },
+      "Armor": {
+        "$type": "Armor, Assembly-CSharp",
+        "Durability": 95
+      },
+      "Consumable": {
+        "$type": "Consumable, Assembly-CSharp",
+        "ConsumableInt": 1235,
+        "Effects": [
+          99,
+          12,
+          53,
+          22
+        ]
+      },
+      "Equippable": {
+        "$type": "Equippable, Assembly-CSharp",
+        "SlotType": 0
       }
     }
   }

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public HouseWindow HouseWindow;
+    public InventoryWindow InventoryWindow;
+    public MobileCamera MainCam;
+
     public static GameManager Instance { get; private set; }
-
-    public InventoryManager InventoryManager;
-
-
+    
     private void Start()
     {
         //string path = Application.streamingAssetsPath + @"/Database/Item_Database.json";

@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public enum SlotType
 {
-    All,
+    None,
+    Other,
     MainHand,
     OffHand,
     Head,
@@ -25,16 +26,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     static GameObject OldSlot;
     static GameObject ItemInMotion;
 
-    private void Update()
-    {
-
-    }
-
-
-    
     void OnTransformChildrenChanged()
     {
-        if (SlotNumber == -99) // Don't do anything if it's the trash can
+        if (SlotType == SlotType.Other) // Don't do anything if it's marked as other type of slot(ie trash can & passive slots)
             return;
         
         if (transform.childCount > 0)
@@ -80,13 +74,23 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        //if (SlotType == SlotType.Other)
+        //{
+        //    Debug.Log("This is not an inventory slot");
+        //    return;
+        //}
+        HandleInventorySlot();
+    }
+
+    private void HandleInventorySlot()
+    {
         // If currently there's an item in motion, motion means we are trying to move an item by clicking on it
         if (ItemInMotion != null)
         {
             // If the target slot is empty
             if (HeldItem == null) 
             {
-                if (CanMove(gameObject, ItemInMotion))
+                if (CanMove(ItemInMotion))
                 {
                     HeldItem = ItemInMotion;
                     HeldItem.transform.SetParent(transform);
@@ -132,7 +136,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         var oldSlotType = oldSlot.GetComponent<Slot>().SlotType;
         var itemSlotType = item.GetComponent<ItemObject>().ItemObjectData.item.slotType();
         
-        if (SlotType == SlotType.All && oldSlotType == SlotType.All)
+        if (SlotType == SlotType.None && oldSlotType == SlotType.None)
             return true;
         if (SlotType == itemSlotType && oldSlotType == itemSlotType)
             return true;
@@ -142,14 +146,17 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         return false;
     }
     //Check if the target slot accepts the item in motion
-    bool CanMove(GameObject slot, GameObject item)
+    bool CanMove(GameObject item)
     {
-        if (SlotType == SlotType.All)
-            return true;
-        if (SlotType == item.GetComponent<ItemObject>().ItemObjectData.item.slotType())
-            return true;
+        switch (SlotType)
+        {
+            case SlotType.None:
+                return true;
+            case SlotType.Other:
+                return true;
+        }
 
-        return false;
+        return SlotType == item.GetComponent<ItemObject>().ItemObjectData.item.slotType();
     }
 
     GameObject FirstChildWithItemObject()

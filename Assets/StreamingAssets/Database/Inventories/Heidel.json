@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "InventoryName": "Heidel",
+    "SlotNumber": 0,
+    "item": {
+      "ID": 0,
+      "Name": "item_10",
+      "Type": {
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "Helmet"
+        },
+        "Equippable": {
+          "$type": "Equippable, Assembly-CSharp",
+          "SlotType": 3
+        }
+      }
+    }
+  },
+  {
+    "InventoryName": "Heidel",
+    "SlotNumber": 1,
+    "item": {
+      "ID": 0,
+      "Name": "item_11",
+      "Type": {
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": "bodyArmor"
+        },
+        "Equippable": {
+          "$type": "Equippable, Assembly-CSharp",
+          "SlotType": 4
+        }
+      }
+    }
+  }
+]

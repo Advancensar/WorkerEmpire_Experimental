@@ -7,6 +7,7 @@ public class Item
 {    
     public int ID;
     public string Name = "Empty";
+    public Recipe Recipe = new Recipe();
     public Dictionary<string, ItemType> Type = new Dictionary<string, ItemType>();
 
     public Item()
@@ -25,7 +26,7 @@ public class Item
         {
             return ((Equippable)Type["Equippable"]).SlotType;
         }
-        return SlotType.All;
+        return SlotType.None;
     }
 
 }

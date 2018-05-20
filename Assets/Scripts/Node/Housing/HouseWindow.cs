@@ -9,7 +9,11 @@ public class HouseWindow : MonoBehaviour
 {
     public GameObject HouseUsagePrefab;
     public GameObject BuyButton;
+    public TextMeshProUGUI Address;
+
     public GameObject SelectedUsage;
+
+    public Color prefabcolor; // temp
 
     string AssetPath = @"Sprites/UI/House";
     House house;
@@ -19,7 +23,9 @@ public class HouseWindow : MonoBehaviour
 
     void Start()
     {
+        prefabcolor = HouseUsagePrefab.GetComponent<Image>().color;
         UsageContent = transform.Find("Scroll View").Find("Viewport").Find("Content");
+        gameObject.SetActive(false);
     }
 
     public void LoadWindowInfo(House house)
@@ -32,6 +38,7 @@ public class HouseWindow : MonoBehaviour
         this.house = house;
         //var houseData = house.GetHouseData();
         Banner = Resources.Load<Image>(AssetPath + "/" + house.PlayerHouseData.HouseType);
+        Address.text = house.Address;
 
         //Load data for each usage
         foreach (var data in house.HouseDatas)
@@ -68,7 +75,7 @@ public class HouseWindow : MonoBehaviour
                 {
                     if (house.PlayerHouseData.Current > 0 && house.PlayerHouseData.Current - 1 >= i)
                     {
-                        child.GetComponent<Image>().color = Color.red;
+                        child.GetComponent<Image>().color = Color.green;
                     }
                 }
 
@@ -91,7 +98,7 @@ public class HouseWindow : MonoBehaviour
     {
         if (SelectedUsage != null)
         {
-            SelectedUsage.GetComponent<Image>().color = Color.white;
+            SelectedUsage.GetComponent<Image>().color = prefabcolor;
         }
         SelectedUsage = EventSystem.current.currentSelectedGameObject;
         var type = SelectedUsage.GetComponentInChildren<TextMeshProUGUI>().text;
@@ -101,7 +108,7 @@ public class HouseWindow : MonoBehaviour
         RefreshButton();
     }
 
-    void RefreshButton()
+    private void RefreshButton()
     {
         if (SelectedUsage == null)
         {
@@ -110,6 +117,7 @@ public class HouseWindow : MonoBehaviour
         if (house.GetHouseDataByType(SelectedUsage.name).Type == house.PlayerHouseData.HouseType)
         {
             BuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "UPGRADE";
+
         }
         else
         {
@@ -157,12 +165,21 @@ public class HouseWindow : MonoBehaviour
     {
         if (SelectedUsage == null) return;
 
-        house.Build(house.GetHouseDataByType(SelectedUsage.name).Type);
-        foreach (Transform usage in UsageContent)
-        {
-            test(usage.gameObject);
-        }
+        //if (EditorUtility.DisplayDialog("Title", "Message", "OK", "Cancel"))
+        //{
+          house.Build(house.GetHouseDataByType(SelectedUsage.name).Type);
+          foreach (Transform usage in UsageContent)
+          {
+              test(usage.gameObject);
+          }
+        //}
+
         RefreshButton();
+    }
+
+    void modalWindow(int windowID)
+    {
+        Debug.Log("modal click");
     }
 
     public void SellButtonClick()
@@ -175,7 +192,15 @@ public class HouseWindow : MonoBehaviour
 
     }
 
+    public void OpenWindow()
+    {
+        gameObject.SetActive(true);
+    }
 
+    public void CloseWindow()
+    {
+        gameObject.SetActive(false);
+    }
 
 }
     
