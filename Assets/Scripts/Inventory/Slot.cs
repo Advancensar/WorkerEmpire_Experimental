@@ -26,6 +26,13 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     static GameObject OldSlot;
     static GameObject ItemInMotion;
 
+    private float holdTime = 0.8f;
+    private float acumTime = 0;
+
+    void Update()
+    {
+    }
+
     void OnTransformChildrenChanged()
     {
         if (SlotType == SlotType.Other) // Don't do anything if it's marked as other type of slot(ie trash can & passive slots)
@@ -96,6 +103,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
                     HeldItem.transform.SetParent(transform);
                     ItemInMotion = null;
                     //Clear the color of previous slot
+                    GameManager.Instance.ItemTooltipWindow.gameObject.SetActive(false);
                     OldSlot.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 }
             }
@@ -112,7 +120,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
                         ItemInMotion.transform.SetParent(gameObject.transform);
                     }
                 }
-
+                GameManager.Instance.ItemTooltipWindow.gameObject.SetActive(false);
                 OldSlot.GetComponent<Image>().color = new Color32(255,255,255,255);
                 ItemInMotion = null;
             }
@@ -123,6 +131,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             // If there's no item in motion when we click on a slot with an item in it
             if (ItemInMotion == null) 
             {
+                GameManager.Instance.ItemTooltipWindow.gameObject.SetActive(true);
+                GameManager.Instance.ItemTooltipWindow.LoadWindowInfo(HeldItem.GetComponent<ItemObject>());
+
                 GetComponent<Image>().color = new Color32(50, 0, 0, 120);
                 ItemInMotion = HeldItem;
                 OldSlot = gameObject;

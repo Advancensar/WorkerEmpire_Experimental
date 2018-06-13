@@ -8,10 +8,10 @@ public class Worker
 {
     public int ID;
 
-    public string OriginNode;
-    public string WorkNode;
+    public string OriginNode = "";
+    public string WorkNode = "";
     public DateTime StartTime;
-    public int WorkTime;
+    public int WorkTime = 1;
 
     public int WorkerLevel = 0;
 
@@ -24,28 +24,38 @@ public class Worker
     // Worktime = travel + work + travel
     // travel = distance / speed;
     
-    void SetupWork(SubNode subNode)
+    public void SetupWork(SubNode subNode)
     {
-        WorkNode = subNode.MainNode.gameObject.name + "/" + subNode.name;
+        Debug.Log("asdasd" + subNode.MainNode().gameObject.name);
+        WorkNode = subNode.MainNode().gameObject.name + "/" + subNode.name;
         StartTime = DateTime.Now;
-        WorkTime = ((MainNode) NodeManager.Instance.Nodes[WorkNode.Split('/')[0]]).SubNodes[WorkNode.Split('/')[1]].GetWorkTime();
+        //WorkTime = ((MainNode) NodeManager.Instance.Nodes[WorkNode.Split('/')[0]]).SubNodes[WorkNode.Split('/')[1]].GetWorkTime();
+        WorkTime = 5;
     }
 
-    void Work()
+    public void Work()
     {
+        Debug.Log("umarım milyon kez dönmez");
         var elapsedSeconds = (DateTime.Now - StartTime).TotalSeconds;
+        if (elapsedSeconds < 1)
+            return;
 
-        for (int i = 0; i < elapsedSeconds/WorkTime; i++)
+        for (int i = 0; i < (int)elapsedSeconds/WorkTime; i++)
         {
             //items.Add(((MainNode) NodeManager.Instance.Nodes[WorkNode.Split('/')[0]]).SubNodes[WorkNode.Split('/')[1]].Resources);
-            foreach (var item in ((MainNode)NodeManager.Instance.Nodes[WorkNode.Split('/')[0]]).SubNodes[WorkNode.Split('/')[1]].Resources)
-            {
-                InventoryManager.Instance.GetInventoryByName(OriginNode).AddItem(item);
-            }
+            //foreach (var item in ((MainNode)NodeManager.Instance.Nodes[WorkNode.Split('/')[0]]).SubNodes[WorkNode.Split('/')[1]].Resources)
+            //{
+            //    InventoryManager.Instance.GetInventoryByName(OriginNode).AddItem(item);
+            //}
         }
 
-        StartTime = DateTime.Now.AddSeconds(-(elapsedSeconds % WorkTime));
+        StartTime = DateTime.Now.AddSeconds(-(int)(elapsedSeconds % WorkTime));
 
+    }
+
+    public void cop()
+    {
+        Debug.Log((DateTime.Now - StartTime).TotalSeconds);
     }
 
     struct IIStruct

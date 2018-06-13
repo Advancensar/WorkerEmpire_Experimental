@@ -1,5 +1,6 @@
 {
-  "Node (1)": true,
-  "Node/SubNode (2)": true,
-  "Node": true
+  "TestNode/SubNode": true,
+  "TestNode": true,
+  "Node/SubNode (1)": true,
+  "Node/SubNode (2)": true
 }

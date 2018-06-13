@@ -9,10 +9,6 @@ public class MainNode : Node
     protected override void Awake()
     {
         base.Awake();
-        foreach (Transform child in transform)
-        {
-            SubNodes.Add(child.name,child.GetComponent<SubNode>());
-        }
     }
     
 }

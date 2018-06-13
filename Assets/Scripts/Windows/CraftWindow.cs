@@ -103,11 +103,6 @@ public class CraftWindow : MonoBehaviour
 
     }
 
-    void Craft()
-    {
-
-    }
-
     public int GetCount(Item item)
     {
         return GetCount(item.ID);
@@ -134,30 +129,6 @@ public class CraftWindow : MonoBehaviour
             }
         }
         return count;
-    }
-
-
-
-    bool fCanCraft(Item item)
-    {
-        foreach (var component in item.Recipe.List)
-        {
-            if (ItemDatabase.Instance.GetItem(component.id).HasItemType("Stackable"))
-            {
-                foreach (var slotNumber in Inventory.Items.Keys.ToList())
-                {
-                    if (Inventory.Items[slotNumber].item.ID == component.id)
-                    {
-                        return Inventory.Items[slotNumber].item.GetStackable().CurrentStack > component.required;
-                    }
-
-                }
-            }
-
-
-        }
-
-        return false;
     }
 
 

@@ -2,27 +2,40 @@
   {
     "ID": 0,
     "OriginNode": "Heidel",
-    "WorkNode": null,
-    "StartTime": "0001-01-01T00:00:00",
-    "WorkTime": 0,
-    "WorkerLevel": 1,
-    "Lumber": 2,
-    "Metal": 6,
-    "Ore": 3,
-    "Speed": 4,
-    "Workspeed": 5
-  },
-  {
-    "ID": 0,
-    "OriginNode": "Heidel",
-    "WorkNode": null,
-    "StartTime": "0001-01-01T00:00:00",
-    "WorkTime": 0,
+    "WorkNode": "Node/SubNode (2)",
+    "StartTime": "2018-06-14T01:34:27.3013417+03:00",
+    "WorkTime": 5,
     "WorkerLevel": 1,
     "Lumber": 6,
     "Metal": 3,
     "Ore": 3,
+    "Speed": 6,
+    "Workspeed": 6
+  },
+  {
+    "ID": 0,
+    "OriginNode": "Heidel",
+    "WorkNode": "Node/SubNode (2)",
+    "StartTime": "2018-06-14T01:34:22.8733526+03:00",
+    "WorkTime": 5,
+    "WorkerLevel": 0,
+    "Lumber": 4,
+    "Metal": 1,
+    "Ore": 2,
+    "Speed": 2,
+    "Workspeed": 2
+  },
+  {
+    "ID": 0,
+    "OriginNode": "Heidel",
+    "WorkNode": "Node/SubNode (2)",
+    "StartTime": "2018-06-14T01:34:25.635914+03:00",
+    "WorkTime": 5,
+    "WorkerLevel": 2,
+    "Lumber": 8,
+    "Metal": 4,
+    "Ore": 4,
     "Speed": 3,
-    "Workspeed": 7
+    "Workspeed": 3
   }
 ]

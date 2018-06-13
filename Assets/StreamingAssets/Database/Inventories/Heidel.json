@@ -17,7 +17,8 @@
           "$type": "Stackable, Assembly-CSharp",
           "CurrentStack": 6
         }
-      }
+      },
+      "Price": 0
     }
   },
   {
@@ -34,7 +35,8 @@
           "$type": "BaseType, Assembly-CSharp",
           "BaseTypeString": ""
         }
-      }
+      },
+      "Price": 0
     }
   },
   {
@@ -51,7 +53,8 @@
           "$type": "BaseType, Assembly-CSharp",
           "BaseTypeString": ""
         }
-      }
+      },
+      "Price": 0
     }
   },
   {
@@ -68,7 +71,8 @@
           "$type": "BaseType, Assembly-CSharp",
           "BaseTypeString": ""
         }
-      }
+      },
+      "Price": 0
     }
   }
 ]

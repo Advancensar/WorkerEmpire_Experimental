@@ -10,6 +10,7 @@ public static class SaveManager {
         SavePlayerInventories();
         SaveNodes();
         SaveWorkers();
+        SavePlayer();
     }
     
     public static void SaveHouseData()
@@ -43,6 +44,14 @@ public static class SaveManager {
     public static void LoadWorkers()
     {
         WorkerManager.Instance.LoadWorkerData();
+    }
+    public static void SavePlayer()
+    {
+        PlayerManager.Instance.SavePlayerData();
+    }
+    public static void LoadPlayer()
+    {
+        PlayerManager.Instance.LoadPlayerData();
     }
 
 }

@@ -10,7 +10,7 @@ public class WorkerManager
     public List<Worker> Workers = new List<Worker>();
 
     private const string PATH = @"/Database/WorkerData.json";
-
+    
     public void SaveWorkerData()
     {
         FileTool.SaveFileAsJson(PATH, Workers);
@@ -18,7 +18,7 @@ public class WorkerManager
 
     public void LoadWorkerData()
     {
-        Workers = FileTool.LoadObjectFromJson<List<Worker>>(PATH);
+        Instance.Workers.AddRange(FileTool.LoadObjectFromJson<List<Worker>>(PATH));
     }
 
     public Worker RandomWorker(string cityName)
@@ -47,25 +47,27 @@ public class WorkerManager
     public List<Worker> GetWorkersOfCity(string cityName)
     {
         //var cityWorkers = new List<Worker>();
+        //Debug.Log("wc " +  Workers.Count);
         //foreach (var worker in Workers)
         //{
-        //    if (worker.OriginNode.gameObject.name == cityName)
+        //    Debug.Log("Looped " + Workers.Count);
+        //    if (worker.OriginNode == cityName)
         //    {
         //        cityWorkers.Add(worker);
         //    }
         //}
-
+        //Debug.Log(cityWorkers.Count);
+        //return cityWorkers;
         return Workers.Where(x => x.OriginNode == cityName).ToList();
         //return Workers.Select(o => o.OriginNode.gameObject.name == cityName).ToList();
     }
 
     public void AddWorker(Worker worker)
     {
-        if (Workers == null)
-        {
-            Workers = new List<Worker>();
-        }
         Workers.Add(worker);
     }
+
+
+
 
 }
