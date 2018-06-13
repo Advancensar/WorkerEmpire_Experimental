@@ -48,7 +48,7 @@ public class ItemDatabase
         foreach (var Item in Items)
         {
             if (Item.Name == name)
-                return Item;
+                return Clone(Item);
         }
         Debug.LogError("Couldn't find the item with the name : " + name);
         return null;
@@ -58,8 +58,9 @@ public class ItemDatabase
     {
         foreach (var Item in Items)
         {
+            //Debug.Log(Item.ID);
             if (Item.ID == ID)
-                return Item;
+                return Clone(Item);
         }
         Debug.LogError("Couldn't find the item with the ID : " + ID);
         return null;
@@ -87,9 +88,19 @@ public class ItemDatabase
 
     public Item RandomItem()
     {
-        return Items[Random.Range(0, Items.Count)];
-        //var result = Items.Select(x => x.ID).ToList();
-        //return GetItem(result[Random.Range(0, result.Count)]);
+        return GetItem(Random.Range(0, Items.Count));
     }
 
+    public static T Clone<T>(T source)
+    {
+        var serialized = JsonConvert.SerializeObject(source, Formatting.Indented,
+            new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            }
+        );
+        return JsonConvert.DeserializeObject<T>(serialized,
+            new JsonSerializerSettings {TypeNameHandling = TypeNameHandling.Auto});
+    }
 }

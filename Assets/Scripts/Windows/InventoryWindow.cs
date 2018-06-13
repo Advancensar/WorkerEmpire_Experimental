@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InventoryWindow : MonoBehaviour {
 
     public GameObject SlotPrefab;
     public GameObject ItemObjectPrefab;
-    public Transform slotContent;
+    public Transform SlotContent;
+    public Inventory CurrentInventory;
 
     public int MaxSlot = 30;
     public Dictionary<int, GameObject> Slots = new Dictionary<int, GameObject>();
@@ -43,6 +45,12 @@ public class InventoryWindow : MonoBehaviour {
             return;
         }
         InstantiateItems(Inventory);
+        CurrentInventory = Inventory;
+    }
+
+    private void OnDisable()
+    {
+        CurrentInventory = null;
     }
 
     public void InstantiateItems(Inventory Inventory)
@@ -73,17 +81,21 @@ public class InventoryWindow : MonoBehaviour {
 
         //Debug.Log("Inventory name : " + Inventory.InventoryName);
 
-        foreach (var key in Inventory.Items.Keys)
+        foreach (var key in Inventory.Items.Keys.ToList())
         {
-            var itemObjectData = Inventory.Items[key];
-            //Debug.Log("Key: " + key + "iod" + itemObjectData.SlotNumber);
-
-            var item = Instantiate(ItemObjectPrefab);
-            item.GetComponent<ItemObject>().ItemObjectData = itemObjectData;
-            item.transform.SetParent(Slots[itemObjectData.SlotNumber].transform, worldPositionStays: false);
-            item.GetComponent<ItemObject>().LoadItemInfo();
+            InstantiateItem(Inventory.Items[key]);
         }
         //Slots[i].GetComponent<Slot>().SlotNumber = i;
+    }
+
+    private void InstantiateItem(ItemObjectData iod, int slotNumber = -1)
+    {
+        slotNumber = slotNumber == -77 ? FindFirstAvailableSlot() : iod.SlotNumber;
+
+        var item = Instantiate(ItemObjectPrefab);
+        item.GetComponent<ItemObject>().ItemObjectData = iod;
+        item.transform.SetParent(Slots[slotNumber].transform, worldPositionStays: false);
+        item.GetComponent<ItemObject>().LoadItemInfo();
     }
 
     public void InstantiateSlots()
@@ -93,12 +105,12 @@ public class InventoryWindow : MonoBehaviour {
             GameObject slot;
             if (DynamicInventory)
             {
-                slot = Instantiate(SlotPrefab, slotContent, worldPositionStays: false);
+                slot = Instantiate(SlotPrefab, SlotContent, worldPositionStays: false);
                 slot.SetActive(false);
             }
             else
             {
-                slot = slotContent.GetChild(i).gameObject;
+                slot = SlotContent.GetChild(i).gameObject;
             }
 
             slot.GetComponent<Slot>().SlotNumber = slot.transform.GetSiblingIndex();
@@ -106,7 +118,12 @@ public class InventoryWindow : MonoBehaviour {
 
             //Slots[i].GetComponent<Slot>().SlotNumber = i;
         }
-    }    
+    }
+
+    public void RefreshSlot(int slotNumber)
+    {
+        Slots[slotNumber].GetComponent<Slot>().HeldItem.GetComponent<ItemObject>().LoadItemInfo();
+    }
 
     public void AddButton()
     {
@@ -115,16 +132,48 @@ public class InventoryWindow : MonoBehaviour {
             item = ItemDatabase.Instance.RandomItem(),
             SlotNumber = -77
         };
-        AddItemToSlot(FindFirstAvailableSlot(), iod);
+        
+        if (iod.item.HasItemType("Stackable"))
+        {
+            var matchingSn = CurrentInventory.GetItemSlotNumber(iod.item);
+            if (matchingSn > -1)
+            {
+                CurrentInventory.Items[matchingSn].item.GetStackable().AddToStack(iod.item.GetStackable().CurrentStack);
+                RefreshSlot(matchingSn);
+                Debug.Log(CurrentInventory.Items[matchingSn].item.GetStackable().CurrentStack + " : " + iod.item.GetStackable().CurrentStack);
+            }
+            else
+            {
+                InstantiateItem(iod, iod.SlotNumber);
+
+            }
+
+        }
+        else
+
+        {
+            InstantiateItem(iod, iod.SlotNumber);
+
+        }
+
+        //iod.SlotNumber = FindFirstAvailableSlot();
+        //InstantiateItem(iod);
+        //AddItemToSlot(FindFirstAvailableSlot(), iod);
         //AddRandomItemToFirstAvailableSlot();        
     }
-
+    
     private void AddItemToSlot(int slotNumber, ItemObjectData iod)
     {
-        var itemObject = Instantiate(ItemObjectPrefab);
-        itemObject.GetComponent<ItemObject>().ItemObjectData = iod;
-        itemObject.GetComponent<ItemObject>().LoadItemInfo();
-        itemObject.transform.SetParent(Slots[slotNumber].transform);
+        iod.SlotNumber = slotNumber;
+        InstantiateItem(iod);
+        //if (iod.item.Type.ContainsKey("Stackable") && CurrentInventory.HasItem(iod))
+        //{
+            
+        //}
+        //var itemObject = Instantiate(ItemObjectPrefab);
+        //itemObject.GetComponent<ItemObject>().ItemObjectData = iod;
+        //itemObject.GetComponent<ItemObject>().LoadItemInfo();
+        //itemObject.transform.SetParent(Slots[slotNumber].transform);
     }
 
     int FindFirstAvailableSlot()

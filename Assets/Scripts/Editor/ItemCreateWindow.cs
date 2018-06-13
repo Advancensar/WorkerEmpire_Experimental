@@ -15,7 +15,9 @@ public class ItemCreateWindow : EditorWindow
     {
         { "Armor", false },
         { "Consumable", false },
-        { "Equippable", false }
+        { "Equippable", false },
+        { "Stackable", false },
+        { "Resource", false }
     };
 
     Dictionary<string, ItemType> selectedTypes = new Dictionary<string, ItemType>() { { "BaseType", new BaseType() } };
@@ -55,6 +57,7 @@ public class ItemCreateWindow : EditorWindow
             catch (Exception e)
             {
                 itemTexture = null;
+                throw e;
             }
         }
 
@@ -92,5 +95,9 @@ public class ItemCreateWindow : EditorWindow
     {
         item = new Item();
         selectedTypes = new Dictionary<string, ItemType>() { { "BaseType", new BaseType() } };
+        foreach (var key in selectedToggles.Keys.ToList())
+        {
+            selectedToggles[key] = false;
+        }
     }
 }

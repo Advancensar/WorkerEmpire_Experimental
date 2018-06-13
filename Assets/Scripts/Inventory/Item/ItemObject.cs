@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,5 +27,15 @@ public class ItemObject : MonoBehaviour
         gameObject.name = ItemObjectData.item.Name;
         var img = GetComponentInChildren<Image>();
         img.sprite = ItemObjectData.item.Image();
+        RefreshGUI();
+    }
+
+    public void RefreshGUI()
+    {
+        if (ItemObjectData.item.HasItemType("Stackable"))
+        {
+            transform.Find("StackSize").GetComponent<TextMeshProUGUI>().text =
+                ItemObjectData.item.GetStackable().CurrentStack.ToString();
+        }
     }
 }

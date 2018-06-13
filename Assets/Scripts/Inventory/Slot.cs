@@ -52,15 +52,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler
                 {
                     if (oldSlotNumber == -77) // -77 means we spawned an item?
                     {
-                        inventory.AddItemToSlot(SlotNumber, iod);
+                        inventory.ReplaceItem(SlotNumber, iod);
                     }
                     else if (inventory.Items.ContainsKey(SlotNumber)) //Swap
                     {
-                        inventory.AddItemToSlot(SlotNumber, iod);
+                        inventory.ReplaceItem(SlotNumber, iod);
                     }
                     else if (!inventory.Items.ContainsKey(SlotNumber)) //move
                     {
-                        inventory.AddItemToSlot(SlotNumber, iod);
+                        inventory.ReplaceItem(SlotNumber, iod);
                         InventoryManager.Instance.GetInventoryByName(oldInventoryName).Items.Remove(oldSlotNumber);
                     }
                 }

@@ -10,7 +10,7 @@ public class PlayerInventory : MonoBehaviour
     private void Awake()
     {
         Inventory.InventoryName = gameObject.name;
-        InventoryManager.Instance.AddInventoryToSaveManager(Inventory);
+        InventoryManager.Instance.AddInventoryToInventoryManager(Inventory);
         InventoryManager.Instance.LoadInventory(Inventory);
         //Inventory.InventorySize = transform.Find("Viewport").Find("Content").childCount;
         //Inventory.CreateInventory(gameObject.name);

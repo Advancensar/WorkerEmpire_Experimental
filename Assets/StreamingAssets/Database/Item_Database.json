@@ -1,81 +1,53 @@
 [
   {
     "ID": 0,
-    "Name": "item_6",
-    "Type": {
-      "BaseType": {
-        "$type": "BaseType, Assembly-CSharp",
-        "BaseTypeString": "boots"
-      },
-      "Equippable": {
-        "$type": "Equippable, Assembly-CSharp",
-        "SlotType": 6
-      }
-    }
-  },
-  {
-    "ID": 0,
-    "Name": "item_11",
-    "Type": {
-      "BaseType": {
-        "$type": "BaseType, Assembly-CSharp",
-        "BaseTypeString": "bodyArmor"
-      },
-      "Equippable": {
-        "$type": "Equippable, Assembly-CSharp",
-        "SlotType": 4
-      }
-    }
-  },
-  {
-    "ID": 0,
-    "Name": "item_10",
-    "Type": {
-      "BaseType": {
-        "$type": "BaseType, Assembly-CSharp",
-        "BaseTypeString": "Helmet"
-      },
-      "Equippable": {
-        "$type": "Equippable, Assembly-CSharp",
-        "SlotType": 3
-      }
-    }
-  },
-  {
-    "ID": 0,
-    "Name": "item_15",
-    "Type": {
-      "BaseType": {
-        "$type": "BaseType, Assembly-CSharp",
-        "BaseTypeString": "Potion"
-      },
-      "Consumable": {
-        "$type": "Consumable, Assembly-CSharp",
-        "ConsumableInt": 1235,
-        "Effects": [
-          99,
-          12,
-          53,
-          22,
-          99,
-          12,
-          53,
-          22
-        ]
-      }
-    }
-  },
-  {
-    "ID": 0,
-    "Name": "Item_12",
+    "Name": "item_1",
+    "Recipe": {
+      "List": []
+    },
     "Type": {
       "BaseType": {
         "$type": "BaseType, Assembly-CSharp",
         "BaseTypeString": ""
       },
-      "Armor": {
-        "$type": "Armor, Assembly-CSharp",
-        "Durability": 95
+      "Stackable": {
+        "$type": "Stackable, Assembly-CSharp",
+        "CurrentStack": 1
+      }
+    }
+  },
+  {
+    "ID": 1,
+    "Name": "item_2",
+    "Recipe": {
+      "List": []
+    },
+    "Type": {
+      "BaseType": {
+        "$type": "BaseType, Assembly-CSharp",
+        "BaseTypeString": ""
+      }
+    }
+  },
+  {
+    "ID": 2,
+    "Name": "item_3",
+    "Recipe": {
+      "List": [
+        {
+          "id": 0,
+          "required": 3
+        },
+        {
+          "id": 1,
+          "required": 2
+        }
+      ]
+    },
+    "Type": {
+      "BaseType": {
+        "$type": "BaseType, Assembly-CSharp",
+        "BaseTypeString": ""
       },
       "Consumable": {
         "$type": "Consumable, Assembly-CSharp",
@@ -86,10 +58,6 @@
           53,
           22
         ]
-      },
-      "Equippable": {
-        "$type": "Equippable, Assembly-CSharp",
-        "SlotType": 0
       }
     }
   }

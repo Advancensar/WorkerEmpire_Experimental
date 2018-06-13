@@ -1,9 +1,17 @@
 {
-  "Heidel/Rustempasa/4 (2)": {
+  "Heidel/Cumhuriyet/4 (2)": {
     "Current": 3,
     "HouseType": "Bank"
   },
+  "Heidel/Cumhuriyet/4": {
+    "Current": 5,
+    "HouseType": "Blacksmith"
+  },
   "Heidel/Rustempasa/4 (1)": {
+    "Current": 3,
+    "HouseType": "Bank"
+  },
+  "Heidel/Rustempasa/4 (2)": {
     "Current": 3,
     "HouseType": "Bank"
   }

@@ -5,5 +5,5 @@ using UnityEngine;
 [System.Serializable]
 public class HouseType
 {
-
+    public List<int> Craftables = new List<int>();
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Recipe 
 {
-    public List<CraftComponent> value = new List<CraftComponent>();
+    public List<CraftComponentData> List = new List<CraftComponentData>();
 
     // Use this for initializatio
 }

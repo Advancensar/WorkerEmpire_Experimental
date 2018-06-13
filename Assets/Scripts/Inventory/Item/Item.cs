@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,4 +30,28 @@ public class Item
         return SlotType.None;
     }
 
+    public bool HasItemType(Type itemType)
+    {
+        foreach (var type in Type.Values)
+        {
+            if (itemType == type.GetType())
+                return true;
+        }
+        return false;
+    }
+
+    public bool HasItemType(string itemType)
+    {
+        return Type.ContainsKey(itemType);
+    }
+
+    public ItemType GetTypeByName(string typeName)
+    {
+        return Type.ContainsKey(typeName) ? Type[typeName] : null;
+    }
+
+    public Stackable GetStackable()
+    {
+        return Type.ContainsKey("Stackable") ? (Stackable)Type["Stackable"] : null;
+    }
 }

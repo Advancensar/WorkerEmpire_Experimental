@@ -8,6 +8,8 @@ public static class SaveManager {
     {
         SaveHouseData();
         SavePlayerInventories();
+        SaveNodes();
+        SaveWorkers();
     }
     
     public static void SaveHouseData()
@@ -25,6 +27,22 @@ public static class SaveManager {
     public static void LoadPlayerInventories()
     {
         InventoryManager.Instance.LoadAllInventories();
+    }
+    public static void SaveNodes()
+    {
+        NodeManager.Instance.SaveNodeData();
+    }
+    public static void LoadNodes()
+    {
+        NodeManager.Instance.LoadNodeData();
+    }
+    public static void SaveWorkers()
+    {
+        WorkerManager.Instance.SaveWorkerData();
+    }
+    public static void LoadWorkers()
+    {
+        WorkerManager.Instance.LoadWorkerData();
     }
 
 }

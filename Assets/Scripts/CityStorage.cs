@@ -6,10 +6,10 @@ public class CityStorage : MonoBehaviour {
 
     public Inventory Inventory;
 
-    private void Start()
+    private void Awake()
     {
         Inventory.InventoryName = gameObject.name;
-        InventoryManager.Instance.AddInventoryToSaveManager(Inventory);
+        InventoryManager.Instance.AddInventoryToInventoryManager(Inventory);
         InventoryManager.Instance.LoadInventory(Inventory);
     }
     

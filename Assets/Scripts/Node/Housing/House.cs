@@ -23,20 +23,19 @@ public class House : MonoBehaviour
     private void Awake()
     {
         Address = transform.parent.parent.parent.name + "/" + transform.parent.name + "/" + gameObject.name;
+        CityManager.Instance.Cities[transform.parent.parent.parent.name].Houses.Add(Address, this);
 
     }
 
     private void Start()
     {
-        CityManager.Instance.Cities[transform.parent.parent.parent.name].Houses.Add(Address, this);
         foreach (var data in HouseDatas)
         {
-            if (PlayerHouseData.Current > 0)
+            if (PlayerHouseData.Current > 0 && PlayerHouseData.HouseType == data.Type)
             {
                 var type = CustomUtilities.GetType(data.Type);
                 HouseType = (HouseType)Activator.CreateInstance(type);
                 break;
-                //Debug.Log("Current house type is : " + type);
             }
         }
     }
@@ -65,6 +64,7 @@ public class House : MonoBehaviour
         {
             PlayerHouseData.Current = 1;
             PlayerHouseData.HouseType = type;
+            ChangeHouseType(type);
         }
         else // upgrade
         {
@@ -82,9 +82,18 @@ public class House : MonoBehaviour
     public void Sell(string Type)
     {
         PlayerHouseData = new PlayerHouseData();
-
+        ChangeHouseType("");
     }
 
+    public void ChangeHouseType(string type)
+    {
+        HouseType = type.Length > 0 ? (HouseType) Activator.CreateInstance(CustomUtilities.GetType(type)) : null;
+    }
 
+    public List<int> GetCraftables()
+    {
+        return HouseType.Craftables;
+        //return new List<int>();
+    }
 
 }

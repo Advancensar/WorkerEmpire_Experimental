@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public HouseWindow HouseWindow;
     public InventoryWindow InventoryWindow;
+    public CraftWindow CraftWindow;
+    public WorkerWindow WorkerWindow;
+
     public MobileCamera MainCam;
 
     public static GameManager Instance { get; private set; }
@@ -16,6 +19,8 @@ public class GameManager : MonoBehaviour
         //FileTool.TEST(path);
         //Storage.Instance.LoadInventory();
         LoadPlayerHouseData();
+        NodeManager.Instance.LoadNodeData();
+        WorkerManager.Instance.LoadWorkerData();
     }
 
     private void Awake()
@@ -39,20 +44,6 @@ public class GameManager : MonoBehaviour
     void LoadItemDB()
     {
         ItemDatabase.Instance.LoadDB();
-    }
-
-    void LoadStorage()
-    {
-        Debug.Log("Instantiated Slots");
-        //Storage.Instance.LoadInventory();
-        Debug.Log("Loaded inventory");
-
-        //var slots = transform.Find("Viewport").transform.Find("Content");
-        //for (int i = 0; i < InventorySize; i++)
-        //{
-        //    Instantiate(SlotPrefab, slots, worldPositionStays: false);
-        //    //Slots[i].GetComponent<Slot>().SlotNumber = i;
-        //}
     }
 
     public void LoadPlayerHouseData()

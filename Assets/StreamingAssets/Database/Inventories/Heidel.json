@@ -1,18 +1,38 @@
 [
   {
     "InventoryName": "Heidel",
-    "SlotNumber": 0,
+    "SlotNumber": 2,
     "item": {
       "ID": 0,
-      "Name": "item_10",
+      "Name": "item_1",
+      "Recipe": {
+        "List": []
+      },
       "Type": {
         "BaseType": {
           "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "Helmet"
+          "BaseTypeString": ""
         },
-        "Equippable": {
-          "$type": "Equippable, Assembly-CSharp",
-          "SlotType": 3
+        "Stackable": {
+          "$type": "Stackable, Assembly-CSharp",
+          "CurrentStack": 6
+        }
+      }
+    }
+  },
+  {
+    "InventoryName": "Heidel",
+    "SlotNumber": 0,
+    "item": {
+      "ID": 1,
+      "Name": "item_2",
+      "Recipe": {
+        "List": []
+      },
+      "Type": {
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": ""
         }
       }
     }
@@ -21,16 +41,32 @@
     "InventoryName": "Heidel",
     "SlotNumber": 1,
     "item": {
-      "ID": 0,
-      "Name": "item_11",
+      "ID": 1,
+      "Name": "item_2",
+      "Recipe": {
+        "List": []
+      },
       "Type": {
         "BaseType": {
           "$type": "BaseType, Assembly-CSharp",
-          "BaseTypeString": "bodyArmor"
-        },
-        "Equippable": {
-          "$type": "Equippable, Assembly-CSharp",
-          "SlotType": 4
+          "BaseTypeString": ""
+        }
+      }
+    }
+  },
+  {
+    "InventoryName": "Heidel",
+    "SlotNumber": 3,
+    "item": {
+      "ID": 1,
+      "Name": "item_2",
+      "Recipe": {
+        "List": []
+      },
+      "Type": {
+        "BaseType": {
+          "$type": "BaseType, Assembly-CSharp",
+          "BaseTypeString": ""
         }
       }
     }

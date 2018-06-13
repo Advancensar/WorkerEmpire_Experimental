@@ -7,7 +7,11 @@ using TMPro;
 
 public class HouseWindow : MonoBehaviour
 {
+    public Transform UsageContent;
+    public Transform CraftObjectContent;
+
     public GameObject HouseUsagePrefab;
+    public GameObject CraftObjectPrefab;
     public GameObject BuyButton;
     public TextMeshProUGUI Address;
 
@@ -18,13 +22,12 @@ public class HouseWindow : MonoBehaviour
     string AssetPath = @"Sprites/UI/House";
     House house;
     Image Banner;
-
-    Transform UsageContent;
+    int CraftTierMultiplier = 3;
 
     void Start()
     {
         prefabcolor = HouseUsagePrefab.GetComponent<Image>().color;
-        UsageContent = transform.Find("Scroll View").Find("Viewport").Find("Content");
+        //UsageContent = transform.Find("Scroll View").Find("Viewport").Find("Content");
         gameObject.SetActive(false);
     }
 
@@ -50,13 +53,13 @@ public class HouseWindow : MonoBehaviour
 
                 Usage.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = data.Type;
                 Usage.name = data.Type;
-                test(Usage);
+                CreateUsageObject(Usage);
             }
         }
         RefreshButton();
     }
 
-    void test(GameObject Usage)
+    void CreateUsageObject(GameObject Usage)
     {
         var level = Usage.transform.Find("Level");
         var data = house.GetHouseDataByType(Usage.name);
@@ -103,9 +106,28 @@ public class HouseWindow : MonoBehaviour
         SelectedUsage = EventSystem.current.currentSelectedGameObject;
         var type = SelectedUsage.GetComponentInChildren<TextMeshProUGUI>().text;
         SelectedUsage.GetComponent<Image>().color = Color.red;
-        
+
+        CreateCraftObject(house.HouseType.Craftables);
+
         //SelectedUsage = house.GetHouseDataByType(type);
         RefreshButton();
+    }
+
+    private void CreateCraftObject(List<int> craftItems)
+    {
+        int length = house.PlayerHouseData.Current * CraftTierMultiplier;
+        if (house.HouseType.Craftables.Count < length)
+        {
+            length = house.HouseType.Craftables.Count;
+        }
+
+        for (var index = 0; index < length; index++)
+        {
+            var itemID = craftItems[index];
+            var CraftObject = Instantiate(CraftObjectPrefab, CraftObjectContent, worldPositionStays: false);
+            CraftObject.GetComponent<CraftObject>().item = ItemDatabase.Instance.GetItem(itemID);
+            CraftObject.GetComponent<CraftObject>().LoadInfo();
+        }
     }
 
     private void RefreshButton()
@@ -170,7 +192,7 @@ public class HouseWindow : MonoBehaviour
           house.Build(house.GetHouseDataByType(SelectedUsage.name).Type);
           foreach (Transform usage in UsageContent)
           {
-              test(usage.gameObject);
+              CreateUsageObject(usage.gameObject);
           }
         //}
 
@@ -187,7 +209,7 @@ public class HouseWindow : MonoBehaviour
         if (SelectedUsage == null) return;
 
         house.Sell(house.GetHouseDataByType(SelectedUsage.name).Type);
-        test(SelectedUsage);
+        CreateUsageObject(SelectedUsage);
         RefreshButton();
 
     }

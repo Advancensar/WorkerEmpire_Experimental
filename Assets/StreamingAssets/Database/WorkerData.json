@@ -1,0 +1,28 @@
+[
+  {
+    "ID": 0,
+    "OriginNode": "Heidel",
+    "WorkNode": null,
+    "StartTime": "0001-01-01T00:00:00",
+    "WorkTime": 0,
+    "WorkerLevel": 1,
+    "Lumber": 2,
+    "Metal": 6,
+    "Ore": 3,
+    "Speed": 4,
+    "Workspeed": 5
+  },
+  {
+    "ID": 0,
+    "OriginNode": "Heidel",
+    "WorkNode": null,
+    "StartTime": "0001-01-01T00:00:00",
+    "WorkTime": 0,
+    "WorkerLevel": 1,
+    "Lumber": 6,
+    "Metal": 3,
+    "Ore": 3,
+    "Speed": 3,
+    "Workspeed": 7
+  }
+]

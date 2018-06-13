@@ -11,7 +11,7 @@ public class InventoryManager
 
     private string PATH = @"/Database/Inventories/";
 
-    public void AddInventoryToSaveManager(Inventory inventory)
+    public void AddInventoryToInventoryManager(Inventory inventory)
     {
         Instance.Inventories.Add(inventory.InventoryName, inventory);
     }
