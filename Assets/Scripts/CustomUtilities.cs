@@ -59,4 +59,13 @@ public static class CustomUtilities
         return null;
 
     }
+
+
+    public static void ClearContent(Transform transform)
+    {
+        foreach (Transform child in transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+    }
 }

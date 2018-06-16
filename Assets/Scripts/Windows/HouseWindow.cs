@@ -115,6 +115,8 @@ public class HouseWindow : MonoBehaviour
 
     private void CreateCraftObject(List<int> craftItems)
     {
+        CustomUtilities.ClearContent(CraftObjectContent);
+
         int length = house.PlayerHouseData.Current * CraftTierMultiplier;
         if (house.HouseType.Craftables.Count < length)
         {

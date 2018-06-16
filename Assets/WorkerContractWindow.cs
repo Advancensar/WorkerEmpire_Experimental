@@ -10,7 +10,7 @@ public class WorkerContractWindow : MonoBehaviour
     public Image WorkerImage;
     public Transform Values;
     public int WorkerGoldCost = 500;
-    public int WorkerEnergyCost = 200;
+    public int WorkerEnergyCost = 0;
 
     private Worker RolledWorker;
     private string WorkerCity;
@@ -30,8 +30,8 @@ public class WorkerContractWindow : MonoBehaviour
 
     public void RollWorker()
     {
-        if (PlayerManager.Instance.Energy < WorkerEnergyCost)
-            return;
+        //if (PlayerManager.Instance.Energy < WorkerEnergyCost)
+        //    return;
 
         RolledWorker = WorkerManager.Instance.RandomWorker(WorkerCity);
         WorkerImage.sprite = RolledWorker.GetAvatar();

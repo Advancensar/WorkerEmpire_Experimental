@@ -3,7 +3,7 @@
     "ID": 0,
     "OriginNode": "Heidel",
     "WorkNode": "Node/SubNode (2)",
-    "StartTime": "2018-06-14T01:34:27.3013417+03:00",
+    "StartTime": "2018-06-16T23:44:58.0582968+03:00",
     "WorkTime": 5,
     "WorkerLevel": 1,
     "Lumber": 6,
@@ -16,7 +16,7 @@
     "ID": 0,
     "OriginNode": "Heidel",
     "WorkNode": "Node/SubNode (2)",
-    "StartTime": "2018-06-14T01:34:22.8733526+03:00",
+    "StartTime": "2018-06-16T23:44:59.058797+03:00",
     "WorkTime": 5,
     "WorkerLevel": 0,
     "Lumber": 4,
@@ -29,7 +29,7 @@
     "ID": 0,
     "OriginNode": "Heidel",
     "WorkNode": "Node/SubNode (2)",
-    "StartTime": "2018-06-14T01:34:25.635914+03:00",
+    "StartTime": "2018-06-16T23:44:56.0592972+03:00",
     "WorkTime": 5,
     "WorkerLevel": 2,
     "Lumber": 8,
@@ -37,5 +37,18 @@
     "Ore": 4,
     "Speed": 3,
     "Workspeed": 3
+  },
+  {
+    "ID": 0,
+    "OriginNode": "Heidel",
+    "WorkNode": "",
+    "StartTime": "0001-01-01T00:00:00",
+    "WorkTime": 1,
+    "WorkerLevel": 0,
+    "Lumber": 4,
+    "Metal": 1,
+    "Ore": 1,
+    "Speed": 6,
+    "Workspeed": 5
   }
 ]
