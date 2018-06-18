@@ -35,6 +35,7 @@ public class CitySpriteButton : MonoBehaviour {
             GameManager.Instance.InventoryWindow.LoadWindowInfo(transform.parent.GetComponent<CityStorage>().Inventory);
 
         }
+
         //var mobileCamera = Camera.main.transform.GetComponent<MobileCamera>();
         //mobileCamera.cityPos = transform.position;
         //mobileCamera.cityViewMode = true;

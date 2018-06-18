@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,11 +27,13 @@ public class Worker
     
     public void SetupWork(SubNode subNode)
     {
-        Debug.Log("asdasd" + subNode.MainNode().gameObject.name);
-        WorkNode = subNode.MainNode().gameObject.name + "/" + subNode.name;
+        //Debug.Log("asdasd" + subNode.MainNode().gameObject.name);
+        //WorkNode = subNode.MainNode().gameObject.name + "/" + subNode.name;
         StartTime = DateTime.Now;
         //WorkTime = ((MainNode) NodeManager.Instance.Nodes[WorkNode.Split('/')[0]]).SubNodes[WorkNode.Split('/')[1]].GetWorkTime();
-        WorkTime = 5;
+        var temp = CalculateRoad(subNode);
+        Debug.Log("result:" + temp);
+        WorkTime = 5 + (int)temp;
     }
 
     public void Work()
@@ -51,6 +54,29 @@ public class Worker
 
         StartTime = DateTime.Now.AddSeconds(-(int)(elapsedSeconds % WorkTime));
 
+    }
+
+    public float CalculateRoad(SubNode subnode)
+    {
+        //float temp = 0;
+        //Debug.Log("astar : " + temp);
+        foreach(var key in NodeManager.Instance.Nodes.Keys.ToList())
+        {
+            Debug.Log(". : " + NodeManager.Instance.Nodes[key].gameObject.name + " key : + " + key);
+        }
+        //Debug.Log("1 : " + NodeManager.Instance.Nodes[OriginNode].gameObject);
+        //Debug.Log("2 : " + ((MainNode)NodeManager.Instance.Nodes[WorkNode]).SubNodes[WorkNode.Split('/')[1]].gameObject);
+        //Debug.Log("2 : " + NodeManager.Instance.Nodes["t3"].gameObject + " : " + NodeManager.Instance.Nodes["t3"].gameObject.name);
+        //var tempList = Astar.FindPath(NodeManager.Instance.Nodes[OriginNode].gameObject, subnode.gameObject);
+        //Debug.Log("tlc :" + tempList.Count);
+        //foreach (var item in tempList)
+        //{
+        //    Debug.Log(".:" + item.name);
+        //}
+        //Debug.Log("astar: " + temp);
+        
+
+        return Astar.CalculateDistance(Astar.FindPath(NodeManager.Instance.Nodes[OriginNode].gameObject, subnode.gameObject));
     }
 
     public void cop()

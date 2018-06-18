@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public InventoryWindow InventoryWindow;
     public CraftWindow CraftWindow;
     public WorkerWindow WorkerWindow;
+    public WorkerContractWindow WorkerContractWindow;
     public NodeWindow NodeWindow;
     public ItemTooltipWindow ItemTooltipWindow;
 

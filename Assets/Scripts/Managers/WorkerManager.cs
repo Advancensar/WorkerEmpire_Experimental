@@ -18,7 +18,11 @@ public class WorkerManager
 
     public void LoadWorkerData()
     {
-        Instance.Workers.AddRange(FileTool.LoadObjectFromJson<List<Worker>>(PATH));
+        var temp = FileTool.LoadObjectFromJson<List<Worker>>(PATH);
+        if (temp == null)
+            return;
+
+        Instance.Workers.AddRange(temp);
     }
 
     public Worker RandomWorker(string cityName)

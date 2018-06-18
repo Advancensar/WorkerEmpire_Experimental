@@ -7,8 +7,9 @@ public class CityNode : Node
     public Dictionary<string, House> Houses = new Dictionary<string, House>();
     //private Dictionary<string, PlayerHouseData> playerHouseData = new Dictionary<string, PlayerHouseData>();
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         CityManager.Instance.Cities.Add(gameObject.name, this);
     }
     

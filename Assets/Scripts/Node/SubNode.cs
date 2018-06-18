@@ -10,8 +10,10 @@ public class SubNode : Node
 
     protected override void Awake()
     {
-        ConnectedNodes.Add(transform.parent.GetComponent<MainNode>());
-        MainNode().SubNodes.Add(gameObject.name, this);
+        //ConnectedNodes.Add(transform.parent.GetComponent<MainNode>());
+        //MainNode().SubNodes.Add(gameObject.name, this);
+        //MainNode().ConnectedNodes.Add(this);
+        base.Awake();
     }
 
     public int GetWorkTime()

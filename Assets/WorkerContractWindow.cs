@@ -19,11 +19,12 @@ public class WorkerContractWindow : MonoBehaviour
     private void Awake()
     {
         //RollWorker("Heidel");
-        LoadWindowInfo("Heidel");
+        //LoadWindowInfo("11");
     }
 
     public void LoadWindowInfo(string CityName)
     {
+        gameObject.SetActive(true);
         WorkerCity = CityName;
         RollWorker();
     }
@@ -55,6 +56,7 @@ public class WorkerContractWindow : MonoBehaviour
         if (PlayerManager.Instance.Gold < (RolledWorker.WorkerLevel+1)* WorkerGoldCost)
             return;
         WorkerManager.Instance.AddWorker(RolledWorker);
+        Debug.Log("adding :" + RolledWorker.ID);
         PlayerManager.Instance.Gold -= (RolledWorker.WorkerLevel + 1)*WorkerGoldCost;
         SaveManager.SaveWorkers();
     }

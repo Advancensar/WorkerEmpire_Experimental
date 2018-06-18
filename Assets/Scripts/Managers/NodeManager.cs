@@ -11,7 +11,6 @@ public class NodeManager
 
     private const string PATH = @"/Database/NodeSaveData.json";
 
-
     public void SaveNodeData()
     {
         var tempNodeData = new Dictionary<string, bool>();
@@ -42,6 +41,10 @@ public class NodeManager
     public void LoadNodeData()
     {
         var tempNodeData = FileTool.LoadObjectFromJson<Dictionary<string, bool>>(PATH);
+
+        if (tempNodeData == null)
+            return;
+
         foreach (var nodeName in tempNodeData.Keys.ToList())
         {
             //Debug.Log(address.Split('/')[0]);

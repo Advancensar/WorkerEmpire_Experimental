@@ -34,6 +34,9 @@ public class CityManager
     public void LoadPlayerHouseData()
     {
         var tempPHD = FileTool.LoadObjectFromJson<Dictionary<string, PlayerHouseData>>(PATH);
+        if (tempPHD == null)
+            return;
+
         foreach (var address in tempPHD.Keys.ToList())
         {
             //Debug.Log(address.Split('/')[0]);

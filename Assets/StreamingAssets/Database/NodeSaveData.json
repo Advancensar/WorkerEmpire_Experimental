@@ -1,6 +1,3 @@
 {
-  "TestNode/SubNode": true,
-  "TestNode": true,
-  "Node/SubNode (1)": true,
-  "Node/SubNode (2)": true
+  "5-sub-1": true
 }

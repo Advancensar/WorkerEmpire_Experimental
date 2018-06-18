@@ -20,7 +20,7 @@ public class SpriteButton : MonoBehaviour
     void Update()
     {
         transform.LookAt(Camera.main.transform);
-        ScaleWithCameraDistance();
+        //ScaleWithCameraDistance();
     }
 
     private void OnMouseDown()
